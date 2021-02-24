@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="billreport" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dea05fb9-35b2-4dd1-a45c-75145fb63fde">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="My Sql"/>
+	<parameter name="realPath" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$P{realPath}+"/Images/logocms.jpg"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="realName" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$P{realName}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="realAddress" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$P{realAddress}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="realLogo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{realLogo}]]></defaultValueExpression>
+	</parameter>
+	<field name="invoice" class="java.lang.String"/>
+	<field name="invoicedate" class="java.lang.String"/>
+	<field name="pname" class="java.lang.String"/>
+	<field name="total" class="java.lang.String"/>
+	<group name="invoice">
+		<groupExpression><![CDATA[$F{invoice}]]></groupExpression>
+	</group>
+	<group name="invoicedate">
+		<groupExpression><![CDATA[$F{invoicedate}]]></groupExpression>
+	</group>
+	<group name="pname">
+		<groupExpression><![CDATA[$F{pname}]]></groupExpression>
+	</group>
+	<group name="total">
+		<groupExpression><![CDATA[$F{total}]]></groupExpression>
+	</group>
+	<background>
+		<band height="124" splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="105" splitType="Stretch">
+			<image onErrorType="Blank">
+				<reportElement x="0" y="0" width="100" height="79" uuid="1f36c97c-6ada-4334-a79b-721b8490d8d0"/>
+				<imageExpression><![CDATA[$P{realPath}+"/Logo/"+$P{realLogo}]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="355" y="21" width="205" height="58" uuid="ff05e692-326e-4b99-b42b-1511e986221d"/>
+				<textFieldExpression><![CDATA[$P{realAddress}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="0" width="205" height="21" uuid="a14e89e6-38d0-4d3b-9deb-67fda8417cfa"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{realName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="222" y="2" width="110" height="30" uuid="456f1e83-7813-4739-b5a5-a5e6bbfd17b4"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[INVOICE]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="450" y="2" width="100" height="30" uuid="844c64eb-9ccb-46e6-a024-2d9ebcd7d9b8"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="50" y="15" width="100" height="30" uuid="01f5dbef-94ad-4638-b179-3ad336367732"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Invoice]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="15" width="100" height="30" uuid="ff2b1eb8-0713-4f0f-9bb2-87312ef19e34"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Invoice Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="15" width="100" height="30" uuid="5e490e60-ba8e-4f36-9e85-79b46554becf"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Patient Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="15" width="100" height="30" uuid="092c96f5-4546-4474-b01c-d116697f6a28"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement x="50" y="0" width="100" height="30" uuid="6dca3632-f880-4316-854c-39e38cac2dab"/>
+				<textFieldExpression><![CDATA[$F{invoice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="170" y="0" width="100" height="30" uuid="964d0e3b-1813-4ea1-835b-22fa482c40d6"/>
+				<textFieldExpression><![CDATA[$F{invoicedate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="30" uuid="3c02d064-d692-420c-a779-849a0d789bd9"/>
+				<textFieldExpression><![CDATA[$F{pname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="0" width="100" height="30" uuid="ab896518-1f14-4e5e-9d10-8657d7cf3ae0"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="57" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+	<noData>
+		<band height="50">
+			<staticText>
+				<reportElement x="124" y="10" width="366" height="30" uuid="265ecd11-b69e-4ad2-a9a2-ddaa151e2257"/>
+				<text><![CDATA[No records available!]]></text>
+			</staticText>
+		</band>
+	</noData>
+</jasperReport>

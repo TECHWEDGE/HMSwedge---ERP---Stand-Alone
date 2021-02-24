@@ -1,0 +1,7 @@
+@charset "ISO-8859-1";
+
+.hyperlink{
+	cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}

@@ -1,0 +1,324 @@
+@charset "ISO-8859-1";
+.tab-pane{
+width : auto;
+border-style : groove;
+border-radius : 10px;
+height : 400px;
+overflow-y : auto;
+
+}
+
+body{
+	background: #eaeaea;
+}
+
+.wrapper {
+  height : auto;
+  background: #eaeaea;  
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+#form1 h1 {
+  font-size: 18px;
+  background:linear-gradient(to right, rgb(36,51,138), rgb(17,142,191));
+  color: rgb(255, 255, 255);
+  padding: 22px 25px;
+  border-radius: 5px 5px 0px 0px;
+  margin: auto;
+  text-shadow: none; 
+  text-align:center;
+}
+
+#form1 {
+  border-radius: 5px;
+  max-width:1000px;
+  width:100%;
+  margin: 5% auto;
+  background-color: #FFFFFF;
+  overflow: hidden;
+}
+#form2 h1 {
+  font-size: 18px;
+  background:linear-gradient(to right, rgb(36,51,138), rgb(17,142,191));
+  color: rgb(255, 255, 255);
+  padding: 22px 25px;
+  border-radius: 5px 5px 0px 0px;
+  margin: auto;
+  text-shadow: none; 
+  text-align:center;
+}
+
+#form2 {
+  border-radius: 5px;
+  max-width:1200px;
+  width:100%;
+  margin: 5% auto;
+  background-color: #FFFFFF;
+  overflow: hidden;
+}
+
+p span {
+  color: #F00;
+}
+
+p {
+  margin: 0px;
+  font-weight: 500;
+  line-height: 2;
+  color:#333;
+}
+
+h1 {
+  text-align:center; 
+  color: #666;
+  text-shadow: 1px 1px 0px #FFF;
+  margin:50px 0px 0px 0px
+}
+
+
+a {
+  text-decoration:inherit
+}
+
+textarea {
+  border-radius: 0px 5px 5px 0px;
+  border: 1px solid #cccccc;
+  margin: 0;
+  width: 800px;
+  height: 100px; 
+  float: left;
+  padding: 0px 15px;
+}
+
+
+
+
+
+.bouton-contact{
+ background:linear-gradient(to right, rgb(36,51,138), rgb(17,142,191));
+  color: #FFF;
+  text-align: center;
+  width: 100%;
+  border:0;
+  padding: 17px 25px;
+  border-radius: 0px 0px 5px 5px;
+  cursor: pointer;
+  margin-top: 40px;
+  font-size: 18px;
+}
+
+
+/* #myTable {
+    border-collapse: collapse;
+    width: 100%;
+    }
+#myTable th {
+    background-color: #009999;
+    color: white;
+   
+}
+
+
+#myTable  .tbody{
+    height:300px;
+    overflow-y:auto;
+ }
+#myTable .thead,.tbody{
+  
+    display:block;
+  } */
+
+.modal-body{
+	background-color: #eaeaea;
+	height:auto;
+	width: auto;
+}  
+.modal{
+margin-top: -35px;
+
+}
+.button1{
+	float : left;
+}
+.button2{
+	float : right;
+}
+.btn-block{
+ width : 1150px;
+}
+.navbar-right{
+    float: right!important;
+    margin-right: 0px;
+    color: black;
+    padding-top: 12px;
+    font-size: 14px;
+}
+
+.fontp
+{
+font-size: 15px;
+} 
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.headr2{
+		display:none;
+	}
+	.go{
+    margin-top: 19%;
+}
+
+.table {
+    width: 98%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    align-items: center;
+    margin: 0 auto;
+}
+.table>thead:first-child>tr:first-child>th {
+    border-top: 1px solid #ddd;
+    color:#333;
+    color: white;
+}
+th {
+	border: 1px solid #ddd;
+}
+
+.table>tbody>tr>td {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    word-break: break-word;
+    border: 1px solid #ddd;
+}
+.cont{
+    height: 387px;
+    width: 1000px;
+}
+thead{
+  /*   display: block; */
+        background: rgb(102, 158, 226);
+}
+tbody{
+  /*   display: block; */
+    overflow-y: auto;
+    max-height: 297px;
+}
+.t1,.t2{
+	width:155px;
+}
+.t3{
+	width:155px;
+}
+.t4{
+	width:159px;
+}
+.t5{
+	width:164px;
+}
+.t6{
+	width:142px;
+}
+
+
+@media(max-width:640px){
+	
+	.headr{
+		display:none;
+	}
+	.headr2 {
+    display: block;
+}
+	
+#cs{
+    width: 141px;
+    float:inherit;
+}
+#form1 {
+  border-radius: 5px;
+  max-width:1000px;
+  width:100%;
+      margin-top: 95px;
+  background-color: #FFFFFF;
+  overflow: hidden;
+}
+.button2 {
+    float: right;
+}
+.go{
+    margin-top: 84%;
+    margin-left: -14px;
+}
+#myTable {
+    border-collapse: collapse;
+    width: 341px; */
+    margin-left: -7px;
+    }
+    
+.table>thead:first-child>tr:first-child>th {
+    border-top: 1px solid #ddd;
+    color: #333;
+    font-size: 12px;
+}
+.cont {
+    margin-left: -8px;
+    height: 349px;
+    width: 377px;
+}
+.tabdiv {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+#myTable tbody{
+	    max-height: 179px;
+	overflow-y:scroll;
+}
+thead{
+    display: block;
+    background: rgb(102, 158, 226);
+}
+tbody{
+    display: block;
+}
+.t1,.t2{
+	width:52px;
+}
+.t3{
+	width:50px;
+}
+.t4{
+	width:73px;
+}
+.t5{
+	width:70px;
+}
+.t6{
+	width:39px;
+}
+
+.btn-block {
+    width: 332px;
+}
+.nav-pills{
+    height: 85px;
+    width: 100%;
+    max-height: 390px;
+    display: flex;
+    overflow: auto;
+}
+.pd{
+    height: 82px;
+}
+textarea {
+    border-radius: 0px 5px 5px 0px;
+    border: 1px solid #cccccc;
+    margin: 0;
+    width: 261px;
+    height: 100px;
+    float: left;
+    padding: 0px 15px;
+}
+}

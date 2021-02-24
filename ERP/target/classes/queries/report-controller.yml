@@ -1,0 +1,182 @@
+getAllStocks: >-
+   select p.prc code,p.name,ps.batch,ps.currentstock,DATE(ps.expdate) expdate,p.pc category,ps.mpack,ps.mpsize,ps.cp,ps.prqty,ps.sudesc,ps.stkpr,ps.markup,
+   ps.sp,ps.spdesc,ps.spsize,ps.stksp,ps.sellqty,ps.sunits,ps.tprice,ps.prprice,ps.id,ps.pid,ps.status,ps.autoid,ps.active 
+   from productstock ps 
+   join product p on p.pid = ps.pid
+   join purchasedetails pd on pd.pid = ps.pid
+   join purchases pur on pur.autoid = pd.purchasesid
+   where DATE(pur.receiveddate) between ? and ?
+
+getCurrentStocks: >-
+   select p.prc code,p.name,ps.batch,ps.currentstock,DATE(ps.expdate) expdate,p.pc category,ps.mpack,ps.mpsize,ps.cp,ps.prqty,ps.sudesc,ps.stkpr,ps.markup,
+   ps.sp,ps.spdesc,ps.spsize,ps.stksp,ps.sellqty,ps.sunits,ps.tprice,ps.prprice,ps.id,ps.pid,ps.status,ps.autoid,ps.active 
+   from productstock ps 
+   join product p on p.pid = ps.pid
+   join purchasedetails pd on pd.pid = ps.pid
+   join purchases pur on pur.autoid = pd.purchasesid
+   where ps.currentstock!=0 and DATE(pur.receiveddate) between ? and ?
+
+getExpiredStocks: >-
+   select p.prc code,p.name,ps.batch,ps.currentstock,DATE(ps.expdate) expdate,p.pc category,ps.mpack,ps.mpsize,ps.cp,ps.prqty,ps.sudesc,ps.stkpr,ps.markup,
+   ps.sp,ps.spdesc,ps.spsize,ps.stksp,ps.sellqty,ps.sunits,ps.tprice,ps.prprice,ps.id,ps.pid,ps.status,ps.autoid,ps.active 
+   from productstock ps 
+   join product p on p.pid = ps.pid
+   join purchasedetails pd on pd.pid = ps.pid
+   join purchases pur on pur.autoid = pd.purchasesid
+   where DATE(ps.expdate) between ? and ?
+      
+getZeroStocks: >-
+   select p.prc code,p.name,ps.batch,ps.currentstock,DATE(ps.expdate) expdate,p.pc category,ps.mpack,ps.mpsize,ps.cp,ps.prqty,ps.sudesc,ps.stkpr,ps.markup,
+   ps.sp,ps.spdesc,ps.spsize,ps.stksp,ps.sellqty,ps.sunits,ps.tprice,ps.prprice,ps.id,ps.pid,ps.status,ps.autoid,ps.active 
+   from productstock ps 
+   join product p on p.pid = ps.pid
+   join purchasedetails pd on pd.pid = ps.pid
+   join purchases pur on pur.autoid = pd.purchasesid
+   where ps.currentstock=0 and DATE(pur.receiveddate) between ? and ?
+   
+getPurchaseBySupplier: >-
+   select allocationid,orderid,orderDate,DATE(receiveddate) receiveddate,updatepricing,productName,Batch,mdate,DATE(expDate) expDate,quantity,unit,unitPrice,discount,taxes,
+   total,totalitems,grandTotal,ean,category,sp,supplier,free,supplierInvoice,mpack,mdesc,sudesc,id,pid,active 
+   from purchase where (supplier = ? and DATE(receiveddate) between ? and ?) and active='active';
+   
+getAllPurchase: >-
+   select allocationid,orderid,orderDate,DATE(receiveddate) receiveddate,updatepricing,productName,Batch,mdate,DATE(expDate) expDate,quantity,unit,unitPrice,discount,taxes,
+   total,totalitems,grandTotal,ean,category,sp,supplier,free,supplierInvoice,mpack,mdesc,sudesc,id,pid,active 
+   from purchase where DATE(receiveddate) between ? and ? and active='active';
+   
+getPurchaseById: >-
+   select allocationid,orderid,orderDate,DATE(receiveddate) receiveddate,updatepricing,productName,Batch,mdate,DATE(expDate) expDate,quantity,unit,unitPrice,discount,taxes,total,totalitems,grandTotal,ean,category,sp,supplier,supplierInvoice,mpack,mdesc,sudesc,id,pid,active 
+   from purchase where allocationid = ? and active='active';
+ 
+getPurchasesBySupplier: >-
+   select p.autoid, p.allocationid,DATE(p.receiveddate) receiveddate,p.supplierid,s.name supplier,p.supplierinvoice,p.grandtotal,p.branchid 
+   from purchases p join supply s on s.sid = p.supplierid where (s.sid = ? and DATE(p.receiveddate) between ? and ?)
+   
+getAllPurchases: >-
+   select p.autoid, p.allocationid,DATE(p.receiveddate) receiveddate,p.supplierid,s.name supplier,p.supplierinvoice,p.grandtotal,p.branchid 
+   from purchases p join supply s on s.sid = p.supplierid where DATE(p.receiveddate) between ? and ?
+   
+getPurchasesById: >-
+   select p.autoid, p.allocationid,DATE(p.receiveddate) receiveddate,p.supplierid,s.name supplier,p.supplierinvoice,p.grandtotal,p.branchid, 
+   pd.purchasesid, pd.batch, pd.packdesc, pd.packsize, pd.singleunitdesc, pd.purchaseqty, pd.totalpurchaseprice, pd.unitcp, pd.stocknumber, pd.stockvaluepurchase, 
+   DATE(pd.expirydate) expirydate, pr.pid productcode, pr.name productname from purchases p join purchasedetails pd on pd.purchasesid = p.autoid join product pr on pd.pid = pr.pid
+   join supply s on s.sid = p.supplierid where pd.purchasesid = ?
+  
+  
+getOrdersBySupplier: >-
+   select o.autoid, o.orderid, o.orderDate, o.delivery, o.author, o.count, o.supplierid, o.branchid, s.name supplierName
+   from orders o join supply s on s.sid = o.supplierid where (s.sid = ? and DATE(o.orderDate) between ? and ?)
+   
+getAllOrders: >-
+   select o.autoid, o.orderid, o.orderDate, o.delivery, o.author, o.count, o.supplierid, o.branchid, s.name supplierName
+   from orders o join supply s on s.sid = o.supplierid where DATE(o.orderDate) between ? and ?
+   
+getOrdersById: >-
+   select o.autoid, o.orderid, o.orderDate, o.delivery, o.author, o.count, o.supplierid, o.branchid, s.name supplierName,
+   od.pid productCode,p.name productName, od.unit, od.quantity 
+   from orders o join supply s on s.sid = o.supplierid 
+   join orderdetails od on od.orderautoid = o.autoid 
+   join product p on p.pid = od.pid 
+   where o.orderid = ?
+   
+getAllProductCategories: >-
+   select distinct pr.pc from product pr
+   
+getProductsByCategory: >-
+   select pr.pid, pr.name from product pr where pr.pc = ? and pr.name like ? limit ?
+   
+getSalesByProduct: >-
+   select s.autoid, sd.pid productCode, p.name productName, s.invoice, sd.spack packaging, sd.batch, sd.quantitysold, sd.unitprice, s.subt subtotal, s.tax, s.gtotal, sd.expirydate
+   from sale s join saledetails sd on sd.salesautoid = s.autoid
+   join product p on p.pid = sd.pid 
+   where p.pc = ? and p.pid in (?) and s.invoicedate between ? and ?
+   
+getSalesByCategory: >-
+   select s.autoid, sd.pid productCode, p.name productName, s.invoice, sd.spack packaging, sd.batch, sd.quantitysold, sd.unitprice, s.subt subtotal, s.tax, s.gtotal, sd.expirydate
+   from sale s join saledetails sd on sd.salesautoid = s.autoid
+   join product p on p.pid = sd.pid 
+   where p.pc = ? and s.invoicedate between ? and ?
+  
+getAllSales: >-
+  # select s.autoid, s.invoice, s.subt subtotal, s.tax, s.gtotal, c.name customerName, s.isPatient from sale s left join customer c on c.cid = s.cid where s.invoicedate between ? and ?
+   select s.autoid, s.invoice, s.subt subtotal, s.tax, s.gtotal, c.name customerName, 
+   concat(p.fname,' ',p.mname,' ',p.lname) patientName, s.isPatient from sale s 
+   left join hms.patient p on p.autoid = s.cid and isPatient = "true" 
+   left join erpho.customer c on c.cid = s.cid and isPatient = "false" 
+   where s.invoicedate between ? and ?
+   
+getAllSalesErp: >-
+   select s.autoid, s.invoice, s.subt subtotal, s.tax, s.gtotal, c.name customerName, s.isPatient from sale s left join customer c on c.cid = s.cid where s.invoicedate between ? and ?
+
+getAllSalesByCustomer: >-
+   select s.autoid, s.invoice, s.subt subtotal, s.tax, s.gtotal, c.name customerName, s.isPatient 
+   from sale s left join customer c on c.cid = s.cid where s.isPatient="false" and s.invoicedate between ? and ?
+
+getAllSalesByPatient: >-
+   select s.autoid, s.invoice, s.subt subtotal, s.tax, s.gtotal, concat(p.fname,' ',p.mname, '',p.lname) customerName, s.isPatient
+   from sale s left join customer c on c.cid = s.cid 
+   join hms.patient p on p.autoid = s.cid 
+   where s.invoicedate between ? and ? and s.isPatient="true"
+
+getSalesByCustomer: >-
+   select s.autoid, s.invoice, s.subt subtotal, s.tax, s.gtotal, c.name customerName, s.isPatient from sale s left join customer c on c.cid = s.cid where s.invoicedate between ? and ? and (s.cid = ? and s.isPatient = "false")
+
+getSalesByPatient: >-
+   select s.autoid, s.invoice, s.subt subtotal, s.tax, s.gtotal, concat(p.fname,' ',p.mname, ' ',p.lname) customerName, s.isPatient from sale s 
+   left join customer c on c.cid = s.cid left join hms.patient p on p.autoid = s.cid where s.invoicedate between ? and ? and (s.cid = ? and s.isPatient = "true")
+
+getSalesDetailsByInvoice: >-
+   select s.autoid, sd.pid productCode, p.name productName, s.invoice, sd.spack packaging, sd.batch, sd.quantitysold, sd.unitprice, s.subt subtotal, s.tax, s.gtotal, sd.expirydate
+   from sale s join saledetails sd on sd.salesautoid = s.autoid
+   join product p on p.pid = sd.pid 
+   where s.autoid = ?
+   
+getAllCustomers: >-
+   select cid,customer,name from customer 
+   
+getAllSalesDetails: >-
+   select s.autoid, sd.pid productCode, p.name productName, s.invoice, sd.spack packaging, sd.batch, sd.quantitysold, sd.unitprice, s.subt subtotal, s.tax, s.gtotal, sd.expirydate
+   from sale s join saledetails sd on sd.salesautoid = s.autoid
+   join product p on p.pid = sd.pid and s.invoicedate between ? and ?
+
+incomeByDoctor: >-
+   select s.autoid,s.invoice,s.fileno,s.titems,s.gtotal,d.pid,d.docid from erpho.sale s, hms.diagnose d where d.fileno = s.fileno 
+   and DATE_FORMAT(STR_TO_DATE(invoicedate,'%Y-%m-%d'),'%Y-%m-%d') between ? and ? and d.docid = ?
+
+incomeByAllDoctor: >-
+   select s.autoid,s.invoice,s.fileno,s.titems,s.gtotal,d.pid,d.docid from erpho.sale s, hms.diagnose d where d.fileno = s.fileno 
+   and DATE_FORMAT(STR_TO_DATE(invoicedate,'%Y-%m-%d'),'%Y-%m-%d') between ? and ?
+   
+branchWiseSales: >-
+  select b.name branch,s.invoice,c.name customer,concat(p.fname,' ',p.lname) patient,s.subt total,s.discount,s.tax,s.gtotal,s.isPatient
+  from sale s 
+  join branchdetails b on b.id = s.branchid
+  left join hms.patient p on p.autoid = s.cid and s.isPatient='true'
+  left join customer c on c.cid=s.cid and isPatient = 'false' where DATE_FORMAT(STR_TO_DATE(s.invoicedate,'%Y-%m-%d'),'%Y-%m-%d') between ? and ?
+  
+elapsedStocks: >-
+  select ps.batch,ps.expdate,ps.pid,sum(ps.stkpr) stkpr from productstock ps where DATE_FORMAT(STR_TO_DATE(ps.expdate,'%Y-%m-%d'),'%Y-%m-%d') <= ? group by ps.expdate
+
+elapsedStocksByProduct: >-
+  select ps.pid,p.name,p.prc,ps.expdate,ps.stkpr,ps.mpsize,ps.currentstock,ps.cp,ps.sp,ps.batch
+  from erpho.productstock ps 
+  join erpho.product p on p.pid = ps.pid
+  where DATE_FORMAT(STR_TO_DATE(ps.expdate,'%Y-%m-%d'),'%d-%m-%Y') = ?
+  
+productWisePurchase: >-
+  select pr.pid,pr.name,pr.prc,s.name supplier,p.autoid purchaseId,pd.batch,pd.packsize mpack,sum(pd.purchaseqty) prqty,sum(pd.unitcp) unitprice,sum(pd.totalpurchaseprice) totalPrice,
+  p.receiveddate
+  from purchasedetails pd
+  join purchases p on p.autoid=pd.purchasesid
+  join product pr on pr.pid = pd.pid 
+  join supply s on s.sid = p.supplierid
+  
+purchase: >-
+  select p.allocationid,s.name supplier,pr.prc,pr.name productName,pd.batch,pd.packsize,pd.expirydate,pd.unitcp,pd.purchaseqty,pd.totalpurchaseprice total
+  from purchases p join purchasedetails pd on pd.purchasesid = p.autoid join supply s on s.sid=p.supplierid join product pr on pr.pid = pd.pid 
+  where DATE_FORMAT(STR_TO_DATE(p.receiveddate,'%Y-%m-%d'),'%Y-%m-%d') between ? and ?
+
+supplierWiseDetails: >-
+  select s.name supplier,p.allocationid,p.receiveddate,pr.name productName,pd.packsize,pr.prc,pd.batch,pd.purchaseqty,pd.totalpurchaseprice total
+  from purchases p join purchasedetails pd on pd.purchasesid = p.autoid join supply s on s.sid = p.supplierid join product pr on pr.pid = pr.pid
+  

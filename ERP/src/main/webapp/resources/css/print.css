@@ -1,0 +1,151 @@
+
+
+
+	 input[type=text] {
+        display: inline-block;
+        border:none;
+       
+       
+    }
+    
+     input[list=products] {
+        display: inline-block;
+        border:none;
+       
+       
+    }
+    select[class=selectpicker]{
+     display: inline-block;
+        border-style:none;
+    }
+/*     
+ #pr3{
+
+ }
+
+#myTable .tbody{
+    min-height: 300px;
+    height:auto;
+    overflow: hidden;
+ } */
+
+#logotext{
+  margin-left:70px; 
+  }
+  
+   #logotext1{
+  margin-left:70px; 
+  }
+    
+ /*  myTable td { padding: 5px; } */
+
+#refresh{
+	text-align : center;
+}
+
+.button1{
+	float : left;
+	visibility: hidden
+}
+  -webkit-transform:rotate(300deg);
+}
+
+#address{
+	overflow : hidden;
+}
+#address1{
+	
+	overflow:hidden !important;
+}
+
+#customer{
+margin-top : 30px;	
+}
+#inv{
+	 mrgin-left : 10cm;
+}
+
+#dstxt{
+	border : none;
+}
+
+#pr4{
+	
+}
+.di{
+	display : none;
+}
+
+.bootstrap-select.btn-group .dropdown-toggle .caret {
+  display : none;
+}
+
+select {
+   appearance: none;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   text-indent: 1px;
+   text-overflow: '';
+   background: url("custom image") no-repeat right center;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.del{
+	display : none;
+}
+
+.baf{
+overflow : hidden;	
+min-height:50px;
+height: auto;
+width : auto;
+border : none;
+}
+
+
+
+ 
+#items td {
+  white-space: normal !important; 
+  word-wrap: break-word;  
+}
+#items {
+  table-layout: fixed;
+}
+
+  #items tbody{
+    min-height:200px;
+    height:auto;
+    overflow :hidden;
+ }
+ 
+ .bootstrap-select {
+  max-width: 200px;
+}
+.bootstrap-select .btn {
+  background-color: #141414;
+  border-style: solid;
+  border-left-width: 3px;
+  border-left : none;
+  border-top: none;
+  border-bottom: none;
+  border-right: none;
+  color: white;
+  font-weight: 200;
+  padding: 12px 12px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.bootstrap-select .dropdown-menu {
+  margin: 15px 0 0;
+}
+select::-ms-expand {
+  /* for IE 11 */
+  display: none;
+} 

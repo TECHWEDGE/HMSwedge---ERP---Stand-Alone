@@ -1,0 +1,57 @@
+@charset "ISO-8859-1";
+
+body{
+	background: #eaeaea;
+	font-family: 'Verdana', sans-serif;
+}
+
+.navbar>.container-fluid .navbar-brand {
+    color: white;
+}
+.ctc{
+    margin-top: 115px;
+}
+.navbar-default .navbar-nav>li>a{
+	color:white;
+	    background-color: #2b3786;
+}
+.navbar-default .navbar-nav>a{
+	color:white;
+	    background-color: #2b3786;
+}
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    color: #555;
+    background-color: #e7e7e7;
+}
+.navbar-default{
+    background-color: #2b3786;
+    border-color: #2b3786;
+}
+.navbar-default .navbar-nav>.active>a{
+	color:white;
+	    background-color: #0d9ada54;
+}
+@media (max-width: 767px){
+.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+    color: white;
+}
+.navbar-nav .open .dropdown-menu {
+    position: static;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    background-color: #0d1652;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+}
+@media(max-width:640px){
+.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+    color: white;
+}
+}
+#brnli{
+	color:white;
+}
+

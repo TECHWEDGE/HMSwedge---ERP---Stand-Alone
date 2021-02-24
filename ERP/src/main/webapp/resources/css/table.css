@@ -1,0 +1,15 @@
+@charset "ISO-8859-1";
+
+table thead tr th{ background: rgb(102, 158, 226);}
+
+.tableFixHead{ overflow-y: auto; height: 54vh; }
+
+.tableFixHead thead th { position: sticky; top: 0; }
+
+table  { border-collapse: collapse; width: 100%; }
+
+th, td { padding: 8px 16px; }
+
+.table-container{
+	width:auto !important;
+}

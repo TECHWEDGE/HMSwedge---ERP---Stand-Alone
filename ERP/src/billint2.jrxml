@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Bill" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="55c185ce-67f2-44d0-a581-e1e8e6a3b2ea">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="My Sql"/>
+	<subDataset name="Dataset1" uuid="97053ad0-f22d-443f-b82e-0af50e1343e8">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="My Sql"/>
+		<field name="feetype" class="java.lang.String"/>
+		<field name="charges" class="java.lang.String"/>
+		<field name="price" class="java.lang.String"/>
+		<group name="feetype">
+			<groupExpression><![CDATA[$F{feetype}]]></groupExpression>
+		</group>
+		<group name="charges">
+			<groupExpression><![CDATA[$F{charges}]]></groupExpression>
+		</group>
+		<group name="price">
+			<groupExpression><![CDATA[$F{price}]]></groupExpression>
+		</group>
+	</subDataset>
+	<subDataset name="Billgen" uuid="255211df-1685-40cc-97cf-39ea91d4e80b">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="My Sql"/>
+		<field name="invoice" class="java.lang.String"/>
+		<field name="invoicedate" class="java.lang.String"/>
+		<field name="pname" class="java.lang.String"/>
+		<field name="total" class="java.lang.String"/>
+		<group name="invoice">
+			<groupExpression><![CDATA[$F{invoice}]]></groupExpression>
+		</group>
+		<group name="invoicedate">
+			<groupExpression><![CDATA[$F{invoicedate}]]></groupExpression>
+		</group>
+		<group name="pname">
+			<groupExpression><![CDATA[$F{pname}]]></groupExpression>
+		</group>
+		<group name="total">
+			<groupExpression><![CDATA[$F{total}]]></groupExpression>
+		</group>
+	</subDataset>
+	<subDataset name="Dataset2" uuid="998f9d37-411c-464a-8a3d-65af9a776b82">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="My Sql"/>
+		<queryString language="SQL">
+			<![CDATA[select * from billgen]]>
+		</queryString>
+		<field name="invoice" class="java.lang.String"/>
+		<field name="invoicedate" class="java.lang.String"/>
+		<field name="pname" class="java.lang.String"/>
+		<field name="pid" class="java.lang.String"/>
+		<field name="address" class="java.lang.String"/>
+		<field name="wardno" class="java.lang.String"/>
+		<field name="admdate" class="java.lang.String"/>
+		<field name="doctor" class="java.lang.String"/>
+		<field name="disdate" class="java.lang.String"/>
+		<field name="cashier" class="java.lang.String"/>
+		<field name="feetype" class="java.lang.String"/>
+		<field name="charges" class="java.lang.String"/>
+		<field name="price" class="java.lang.String"/>
+		<field name="subtotal" class="java.lang.String"/>
+		<field name="tax" class="java.lang.String"/>
+		<field name="discount" class="java.lang.String"/>
+		<field name="total" class="java.lang.String"/>
+		<field name="docid" class="java.lang.String"/>
+		<field name="admitno" class="java.lang.String"/>
+		<field name="mid" class="java.lang.String"/>
+		<field name="policyholder" class="java.lang.String"/>
+		<field name="policyno" class="java.lang.String"/>
+		<field name="insurancec" class="java.lang.String"/>
+		<field name="type" class="java.lang.String"/>
+		<field name="quantity" class="java.lang.String"/>
+		<field name="fileno" class="java.lang.String"/>
+		<field name="prch" class="java.lang.String"/>
+		<group name="invoice">
+			<groupExpression><![CDATA[$F{invoice}]]></groupExpression>
+		</group>
+		<group name="invoicedate">
+			<groupExpression><![CDATA[$F{invoicedate}]]></groupExpression>
+		</group>
+		<group name="pname">
+			<groupExpression><![CDATA[$F{pname}]]></groupExpression>
+		</group>
+		<group name="pid">
+			<groupExpression><![CDATA[$F{pid}]]></groupExpression>
+		</group>
+		<group name="address">
+			<groupExpression><![CDATA[$F{address}]]></groupExpression>
+		</group>
+		<group name="wardno">
+			<groupExpression><![CDATA[$F{wardno}]]></groupExpression>
+		</group>
+		<group name="admdate">
+			<groupExpression><![CDATA[$F{admdate}]]></groupExpression>
+		</group>
+		<group name="doctor">
+			<groupExpression><![CDATA[$F{doctor}]]></groupExpression>
+		</group>
+		<group name="disdate">
+			<groupExpression><![CDATA[$F{disdate}]]></groupExpression>
+		</group>
+		<group name="cashier">
+			<groupExpression><![CDATA[$F{cashier}]]></groupExpression>
+		</group>
+		<group name="feetype">
+			<groupExpression><![CDATA[$F{feetype}]]></groupExpression>
+		</group>
+		<group name="charges">
+			<groupExpression><![CDATA[$F{charges}]]></groupExpression>
+		</group>
+		<group name="price">
+			<groupExpression><![CDATA[$F{price}]]></groupExpression>
+		</group>
+		<group name="subtotal">
+			<groupExpression><![CDATA[$F{subtotal}]]></groupExpression>
+		</group>
+		<group name="tax">
+			<groupExpression><![CDATA[$F{tax}]]></groupExpression>
+		</group>
+		<group name="discount">
+			<groupExpression><![CDATA[$F{discount}]]></groupExpression>
+		</group>
+		<group name="total">
+			<groupExpression><![CDATA[$F{total}]]></groupExpression>
+		</group>
+		<group name="docid">
+			<groupExpression><![CDATA[$F{docid}]]></groupExpression>
+		</group>
+		<group name="admitno">
+			<groupExpression><![CDATA[$F{admitno}]]></groupExpression>
+		</group>
+		<group name="mid">
+			<groupExpression><![CDATA[$F{mid}]]></groupExpression>
+		</group>
+		<group name="policyholder">
+			<groupExpression><![CDATA[$F{policyholder}]]></groupExpression>
+		</group>
+		<group name="policyno">
+			<groupExpression><![CDATA[$F{policyno}]]></groupExpression>
+		</group>
+		<group name="insurancec">
+			<groupExpression><![CDATA[$F{insurancec}]]></groupExpression>
+		</group>
+		<group name="type">
+			<groupExpression><![CDATA[$F{type}]]></groupExpression>
+		</group>
+		<group name="quantity">
+			<groupExpression><![CDATA[$F{quantity}]]></groupExpression>
+		</group>
+		<group name="fileno">
+			<groupExpression><![CDATA[$F{fileno}]]></groupExpression>
+		</group>
+		<group name="prch">
+			<groupExpression><![CDATA[$F{prch}]]></groupExpression>
+		</group>
+	</subDataset>
+	<parameter name="realPath" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$P{realPath}+"/Images/logocms.jpg"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="realName" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$P{realName}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="realAddress" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$P{realAddress}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="realLogo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{realLogo}]]></defaultValueExpression>
+	</parameter>
+	<field name="invoice" class="java.lang.String"/>
+	<field name="invoicedate" class="java.lang.String"/>
+	<field name="pname" class="java.lang.String"/>
+	<field name="pid" class="java.lang.String"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="wardno" class="java.lang.String"/>
+	<field name="admdate" class="java.lang.String"/>
+	<field name="doctor" class="java.lang.String"/>
+	<field name="disdate" class="java.lang.String"/>
+	<field name="cashier" class="java.lang.String"/>
+	<field name="feetype" class="java.lang.String"/>
+	<field name="charges" class="java.lang.String"/>
+	<field name="price" class="java.lang.String"/>
+	<field name="subtotal" class="java.lang.String"/>
+	<field name="tax" class="java.lang.String"/>
+	<field name="discount" class="java.lang.String"/>
+	<field name="total" class="java.lang.String"/>
+	<field name="docid" class="java.lang.String"/>
+	<field name="admitno" class="java.lang.String"/>
+	<field name="mid" class="java.lang.String"/>
+	<field name="policyholder" class="java.lang.String"/>
+	<field name="policyno" class="java.lang.String"/>
+	<field name="insurancec" class="java.lang.String"/>
+	<field name="type" class="java.lang.String"/>
+	<field name="quantity" class="java.lang.String"/>
+	<field name="fileno" class="java.lang.String"/>
+	<field name="prch" class="java.lang.String"/>
+	<variable name="slno" class="java.lang.String" incrementType="Group" incrementGroup="invoice" calculation="Count">
+		<variableExpression><![CDATA["Tax: "+$F{tax}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="sum" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[Double.parseDouble($F{price})]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="Stot" class="java.lang.Integer" incrementType="Group" incrementGroup="invoice" calculation="Count">
+		<variableExpression><![CDATA[$V{invoice_COUNT}]]></variableExpression>
+		<initialValueExpression><![CDATA[1]]></initialValueExpression>
+	</variable>
+	<variable name="totalcalc" class="java.lang.Double" incrementType="Group" incrementGroup="invoice" calculation="Sum">
+		<variableExpression><![CDATA[Double.parseDouble($F{total})]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="Variable_1" class="java.lang.String"/>
+	<group name="invoice">
+		<groupExpression><![CDATA[$F{invoice}]]></groupExpression>
+	</group>
+	<group name="invoicedate">
+		<groupExpression><![CDATA[$F{invoicedate}]]></groupExpression>
+	</group>
+	<group name="pname">
+		<groupExpression><![CDATA[$F{pname}]]></groupExpression>
+	</group>
+	<group name="pid">
+		<groupExpression><![CDATA[$F{pid}]]></groupExpression>
+	</group>
+	<group name="address">
+		<groupExpression><![CDATA[$F{address}]]></groupExpression>
+	</group>
+	<group name="wardno">
+		<groupExpression><![CDATA[$F{wardno}]]></groupExpression>
+	</group>
+	<group name="admdate">
+		<groupExpression><![CDATA[$F{admdate}]]></groupExpression>
+	</group>
+	<group name="doctor">
+		<groupExpression><![CDATA[$F{doctor}]]></groupExpression>
+	</group>
+	<group name="disdate">
+		<groupExpression><![CDATA[$F{disdate}]]></groupExpression>
+	</group>
+	<group name="cashier">
+		<groupExpression><![CDATA[$F{cashier}]]></groupExpression>
+	</group>
+	<group name="feetype">
+		<groupExpression><![CDATA[$F{feetype}]]></groupExpression>
+	</group>
+	<group name="charges">
+		<groupExpression><![CDATA[$F{charges}]]></groupExpression>
+	</group>
+	<group name="price">
+		<groupExpression><![CDATA[$F{price}]]></groupExpression>
+	</group>
+	<group name="subtotal">
+		<groupExpression><![CDATA[$F{subtotal}]]></groupExpression>
+	</group>
+	<group name="tax">
+		<groupExpression><![CDATA[$F{tax}]]></groupExpression>
+	</group>
+	<group name="discount">
+		<groupExpression><![CDATA[$F{discount}]]></groupExpression>
+	</group>
+	<group name="total">
+		<groupExpression><![CDATA[$F{total}]]></groupExpression>
+	</group>
+	<group name="docid">
+		<groupExpression><![CDATA[$F{docid}]]></groupExpression>
+	</group>
+	<group name="admitno">
+		<groupExpression><![CDATA[$F{admitno}]]></groupExpression>
+	</group>
+	<group name="mid">
+		<groupExpression><![CDATA[$F{mid}]]></groupExpression>
+	</group>
+	<group name="policyholder">
+		<groupExpression><![CDATA[$F{policyholder}]]></groupExpression>
+	</group>
+	<group name="policyno">
+		<groupExpression><![CDATA[$F{policyno}]]></groupExpression>
+	</group>
+	<group name="insurancec">
+		<groupExpression><![CDATA[$F{insurancec}]]></groupExpression>
+	</group>
+	<group name="type">
+		<groupExpression><![CDATA[$F{type}]]></groupExpression>
+	</group>
+	<group name="quantity">
+		<groupExpression><![CDATA[$F{quantity}]]></groupExpression>
+	</group>
+	<group name="fileno">
+		<groupExpression><![CDATA[$F{fileno}]]></groupExpression>
+	</group>
+	<group name="prch">
+		<groupExpression><![CDATA[$F{prch}]]></groupExpression>
+	</group>
+	<background>
+		<band height="43" splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="77" splitType="Stretch">
+			<image onErrorType="Blank">
+				<reportElement x="0" y="0" width="110" height="60" uuid="f26fcccb-2cfa-4a7d-bf04-311e9edf40e9"/>
+				<imageExpression><![CDATA[$P{realPath}+"/Logo/"+$P{realLogo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="380" y="0" width="175" height="20" uuid="8fa2503a-b5cd-47bd-9ab2-4a59f8a6bcca"/>
+				<textFieldExpression><![CDATA[$P{realName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="20" width="175" height="57" uuid="53da1c92-90c0-4354-b53c-eb6baa3a74cf"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{realAddress}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="190" y="0" width="180" height="35" uuid="b4519181-575e-432d-b61f-1ccf1f7cb614"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Consolidated Invoice ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="6" width="40" height="30" uuid="98fbaec8-5b34-4260-b4ff-4a94a855edd5"/>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<textField pattern="d/MM/yy h:mm a">
+				<reportElement x="430" y="6" width="80" height="30" uuid="18ae2604-6ad4-400f-a551-2e44b4a41d05"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<textField>
+				<reportElement x="71" y="0" width="169" height="20" uuid="0e730170-9e2a-44a6-9a30-1d3853d0c4c4"/>
+				<textFieldExpression><![CDATA[$F{pid}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="71" height="20" uuid="a3a1b800-2f60-41a9-844e-bd994d9d87b1"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Patient Name :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="0" width="34" height="20" uuid="c9b0cedc-4fe4-4e60-ae09-b39e56f6c497"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fileno :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="485" y="0" width="70" height="20" uuid="0fd109c7-2860-48e9-b7fc-ea22ee9dda8e"/>
+				<textFieldExpression><![CDATA[$F{fileno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="240" y="30" width="80" height="20" uuid="a3811053-b384-47fa-ae2c-624ae1acd30f">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="162" y="30" width="78" height="20" uuid="de1573c9-3162-44db-a691-d7ce5067bda1"/>
+				<box>
+					<pen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Charges per Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="30" width="163" height="20" uuid="f532f852-2fa2-4b04-a2b0-8951f049c94d"/>
+				<box>
+					<pen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fee Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="30" width="145" height="20" uuid="2dcd36f7-d652-47a0-a178-537303f8cf7e"/>
+				<box>
+					<pen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grand Total per invoice]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="30" width="90" height="20" uuid="a4dbf7a8-cf4b-4ad2-85fd-df50f683c366"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Price]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="54" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="35" width="160" height="17" uuid="de42b711-702e-4bb5-9e91-536786d9ee84"/>
+				<box>
+					<pen lineWidth="0.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{feetype}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#.00#">
+				<reportElement stretchType="RelativeToTallestObject" x="161" y="35" width="80" height="17" uuid="a311b4ff-ef1a-4a38-a61b-cca8a51e4838">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{charges}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="240" y="35" width="80" height="17" uuid="f4331113-458e-4601-b77c-2d64fa0aaa46"/>
+				<box>
+					<pen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" isPrintRepeatedValues="false" x="410" y="35" width="100" height="17" uuid="1602fe46-462b-4f8d-9dca-5d58df307f72"/>
+				<box>
+					<pen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="" positionType="Float" stretchType="RelativeToTallestObject" isPrintRepeatedValues="false" mode="Opaque" x="0" y="4" width="405" height="19" isRemoveLineWhenBlank="true" backcolor="#009999" uuid="746f5ebd-26d9-4b88-8164-a3b428608657"/>
+				<box topPadding="2" leftPadding="1" bottomPadding="0" rightPadding="1">
+					<pen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA["Invoice: " + $F{invoice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="35" width="90" height="17" uuid="72c5b0d4-ae60-48ab-9063-eb1a712c2535"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" mode="Opaque" x="405" y="4" width="70" height="27" backcolor="#009999" uuid="6585015a-2ba5-4ed6-8b14-f0b760bc9227">
+					<printWhenExpression><![CDATA[$V{invoice_COUNT}==1]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA["Tax: "+$F{tax}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="475" y="4" width="80" height="27" backcolor="#009999" uuid="7498e926-33cc-41e0-a294-5b69f6f7e24b">
+					<printWhenExpression><![CDATA[$V{invoice_COUNT} == 1]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA["Discount: "+$F{discount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<summary>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="410" y="40" width="61" height="20" uuid="c7799eef-8c92-449c-923a-6758baa12b5c"/>
+				<text><![CDATA[Signature:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="3" width="71" height="30" uuid="127fa1ec-f4aa-45b6-9f19-5f4b325c1719"/>
+				<text><![CDATA[Total Invoices : Generated ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="3" width="100" height="30" uuid="f7dae17b-d077-49a0-9060-017c5e46c668"/>
+				<textFieldExpression><![CDATA[$V{Stot}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="0" width="150" height="30" uuid="0bee1fcb-5eee-4a60-9705-bcf0e26e42b2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Grand Total: "+$V{totalcalc}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

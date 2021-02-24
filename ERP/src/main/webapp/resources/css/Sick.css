@@ -1,0 +1,251 @@
+@charset "ISO-8859-1";
+
+body{
+	background: #eaeaea;
+}
+
+.wrapper {
+	margin-top:0px;
+  height : auto;
+  background: #eaeaea;  
+  font-family: 'Open Sans', sans-serif;
+}
+#page-wrap { width: 900px; margin: 0 auto; overflow: hidden; background: #fff;  }
+
+#page-wrap { width: 800px; margin: 0 auto; overflow: hidden; background: #fff;  }
+
+
+
+
+#myTable {
+	margin-left :10px;
+    border-collapse: collapse;
+  border : 1px ridge black;
+    width: 100%;
+     
+    
+    }
+#myTable th {
+    background-color: #009999;
+    
+    color: white;
+  
+}
+ .tbody{
+height:300px;
+overflow-y:auto;
+overflow-x:hidden;
+
+
+ }
+.thead, .tbody{
+    
+    display: block;
+  }
+
+#myTable tr td{
+	
+border : 1px ridge black;
+}
+span.slno{
+	
+	float : right;
+}
+
+span.killer {
+    float: left;
+    margin-left: 0.1em;
+    color: red;
+    font-weight: bold;
+    font-size : 20px; 
+}
+#page-wrap h1 {
+  font-size: 18px;
+ background:linear-gradient(to right, rgb(36,51,138), rgb(17,142,191));
+  color: rgb(255, 255, 255);
+  padding: 22px 25px;
+  border-radius: 5px 5px 0px 0px;
+  margin: auto;
+  text-shadow: none; 
+  text-align:center;
+}
+.bouton-contact{
+  background:linear-gradient(to right, rgb(36,51,138), rgb(17,142,191));
+  color: #FFF;
+  text-align: center;
+  width: 100%;
+  border:0;
+  padding: 17px 25px;
+  border-radius: 0px 0px 5px 5px;
+  cursor: pointer;
+  margin-top: 40px;
+  font-size: 18px;
+}
+.button2{
+	float : right;
+}
+.button1{
+	float : left;
+}
+
+#gtot{
+	margin-left  :10px;
+}
+#pname{
+margin-left  :40px;
+}
+#sdate{
+margin-left  :30px;
+}
+
+/* #reason{
+margin-left  :40px;
+width :750px;
+    height: 100px;
+overflow-Y : auto;
+} */
+
+  #logotext{
+  margin-left:80px; 
+  }
+  
+   #logotext1{
+  margin-left:80px; 
+  }
+  
+ /*  #cont{
+  height:150px;
+  width :800px;  
+  
+  } */
+  
+
+  
+  .underline{
+   margin-left : 10px;
+   margin-right : 10px;
+    border-bottom: 1px solid black;
+    
+    display: block;
+}
+  #billed{
+  margin-left : 10px;
+  }
+
+.notes {
+  background-attachment: local;
+  background-image:
+    linear-gradient(to right, white 10px, transparent 10px),
+    linear-gradient(to left, white 10px, transparent 10px),
+    repeating-linear-gradient(white, white 30px, #ccc 30px, #ccc 31px, white 31px);
+  line-height: 30px;
+  padding: 8px 10px;
+}
+.notes1 {
+  background-attachment: local;
+  background-image:
+    linear-gradient(to right, white 10px, transparent 10px),
+    linear-gradient(to left, white 10px, transparent 10px),
+    repeating-linear-gradient(white, white 30px, #ccc 30px, #ccc 31px, white 31px);
+  line-height: 30px;
+  padding: 8px 10px;
+}
+.navbar-right{
+    float: right!important;
+    margin-right: 0px;
+    color: black;
+    padding-top: 12px;
+    font-size: 14px;
+}
+.dr{
+	border-style:none; width:80%; border-width:2px;
+}
+
+@media(max-width:640px){
+	/*  #cont{
+  height:150px;
+  width :800px;  
+  
+  } */
+  
+#page-wrap {
+    width: 347px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #fff;
+}
+#adbar pre {
+    display: block;
+    padding: 0px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #333;
+    word-break: break-all;
+    word-wrap: break-word;
+    border: none;
+    background-color: white;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.fom{
+    display: contents;
+}
+/* #reason{
+    width: 275px;
+    height: 106px;
+    overflow-Y: auto;
+} */
+
+.fig2{
+    margin: 0;
+    display: inline-block;
+}
+.imgh{
+    height: 31px;
+}
+
+.dr{
+    border-style: none;
+    width: 67%;
+    border-width: 2px;
+}
+#reason {
+    height: 200px;
+    margin-left: 27px;
+    width: 300px;
+}
+}
+
+@media(max-width:640px){
+	
+	#reason {
+    height: 200px;
+    margin-left: 27px;
+    width: 300px;
+}
+}
+
+@media print {
+   #bc {
+       display :  none;
+   }
+   
+   #page-wrap {
+    width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #fff;
+}
+/* #reason{
+    width: 600px;
+    height: 106px;
+}
+ #cont{
+  height:150px;
+  width :600px;  
+  
+  } */
+  
+}

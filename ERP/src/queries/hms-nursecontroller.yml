@@ -1,0 +1,72 @@
+fetchMaxNurseId : >-
+ select max(CAST(SUBSTRING_INDEX(nid,'-',-1) as decimal)) as nid from nurse
+ 
+fetchNurseInfo : >-
+ select n.nid,n.fname,n.lname,n.joindate,n.dob,n.age,n.gender,n.mname,n.regno,n.landphone,n.mobile,n.email,n.ssn,
+ n.address,n.city,n.country,n.pcode,n.state,n.prfshift,n.emptype,n.dept,n.desg,n.specialization,n.qualification,
+ CONCAT(n.fname,' ',n.mname,' ',n.lname) as fullname,(select username from users where users.userid = n.nid ) as username,
+ (select password from users where users.userid = n.nid) as password,n.address2,n.id,br.name,n.status from nurse n 
+ left outer join branchdetails br on n.id = br.id where DATE_FORMAT(STR_TO_DATE(n.joindate, '%Y-%m-%d'),'%Y-%m-%d') 
+ between DATE_FORMAT(STR_TO_DATE(?, '%Y-%m-%d'),'%Y-%m-%d') and DATE_FORMAT(STR_TO_DATE(?, '%Y-%m-%d'),'%Y-%m-%d')
+ order by CAST(SUBSTRING_INDEX(n.nid,'-',-1) as decimal) desc limit ?
+ 
+fetchNurseInfoWithFilter : >-
+ select n.nid,n.fname,n.lname,n.joindate,n.dob,n.age,n.gender,n.mname,n.regno,n.landphone,n.mobile,n.email,n.ssn,
+ n.address,n.city,n.country,n.pcode,n.state,n.prfshift,n.emptype,n.dept,n.desg,n.specialization,n.qualification,
+ CONCAT(n.fname,' ',n.mname,' ',n.lname) as fullname,(select username from users where users.userid = n.nid ) as username,
+ (select password from users where users.userid = n.nid) as password,n.address2,n.id,br.name,n.status from nurse n 
+ left outer join branchdetails br on n.id = br.id where DATE_FORMAT(STR_TO_DATE(n.joindate, '%Y-%m-%d'),'%Y-%m-%d') 
+ between DATE_FORMAT(STR_TO_DATE(?, '%Y-%m-%d'),'%Y-%m-%d') and DATE_FORMAT(STR_TO_DATE(?, '%Y-%m-%d'),'%Y-%m-%d') 
+ and (n.fname like ? or n.mname like ? or n.lname like ?) order by CAST(SUBSTRING_INDEX(n.nid,'-',-1) as decimal) 
+ desc limit ?
+ 
+saveNurseInfo : >-
+ insert into nurse (nid,fname,mname,lname,joindate,dob,age,gender,regno,landphone,mobile,email,ssn,address,city,country,pcode,state,prfshift,emptype,dept,desg,specialization,qualification,address2,id) 
+ values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)on duplicate key update fname=values(fname),mname=values(mname),lname=values(lname),joindate=values(joindate),dob=values(dob),age=values(age),
+ gender=values(gender),regno=values(regno),landphone=values(landphone),mobile=values(mobile),email=values(email),values(ssn),address=values(address),city=values(city),country=values(country),
+ pcode=values(pcode),state=values(state),prfshift=values(prfshift),emptype=values(emptype),dept=values(dept),desg=values(desg),specialization=values(specialization),qualification=values(qualification),
+ address2=values(address2),id=values(id)
+ 
+saveNurseAssignInfo : >-
+ insert into nurseassign(pid,pname,nname,nid,wardno,fileno,admitno) values(?,?,?,?,?,?,?) 
+ on duplicate key update nid = values(nid),nname = values(nname)
+
+fetchNurseAssignInfo : >-
+ select na.pid,concat(p.fname,' ',p.mname,' ',p.lname) patient,na.nid,concat(n.fname,' ',n.mname,' ',n.lname) nurse,adm.wardno,na.fileno,na.admitno from  nurseassign na join patient p on p.pid=na.pid join nurse n 
+ on na.nid = n.nid join admitpat adm on adm.fileno = na.fileno where na.fileno not in (select fileno from discharge)
+ 
+fetchNurseAssingByUid : >-
+ select pid,pname,nid,nname,wardno from  nurseassign where nid in (select userid from userrole where username = ?) and fileno not in (select fileno from discharge)
+ 
+fetchUserIdFromUserName : >-
+ select userid from userrole where username = ?
+ 
+fetchVitalsInfo : >-
+ select usr.userid,concat(n.fname,' ',n.mname,' ',n.lname) nurse from userrole usr join nurse n on n.nid = usr.userid where usr.username = ?
+ 
+fetchVitalsInfoByFile :  >-
+ select v.pid,v.fileno,height,unitheight,weight,weightunit,temperature,tunit,abdominalc,bp,bmi,fi,fe,arest,pulse,timestamp,concat(p.fname,' ',p.mname,' ',p.lname) patient,
+ v.nid,concat(n.fname,' ',n.mname,' ',n.lname) nurse,v.docid,concat(d.fname,' ',d.mname,' ',d.lname) doctor,v.prcalc from vital v join patient p on p.pid=v.pid 
+ left outer join nurse n on v.nid = n.nid left outer join doctor d on d.docID = v.docid where v.fileno = ?
+ 
+fetchVitalsPatientByPid : >-
+ select v.pid,v.fileno,concat(v.height,' ',unitheight) height,concat(v.weight,' ',weightunit) weight,concat(temperature,' ',tunit) temperature,v.abdominalc,bp,bmi,concat(v.fi,' ',v.fe,' ',arest) Respiration,
+ pulse,timestamp,prcalc from vital v where v.pid = ?
+ 
+saveVitalsInfo : >-
+ insert into vital(pid,fileno,height,unitheight,weight,weightunit,temperature,tunit,abdominalc,bp,pulse,bmi,fi,fe,arest,timestamp,nid,docid,prcalc,id) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),?,?,?,?) 
+ on duplicate key update height = values(height),unitheight=values(unitheight),weight=values(weight),weightunit=values(weightunit),temperature=values(temperature),tunit=values(tunit),abdominalc=values(abdominalc),
+ bp=values(bp),pulse=values(pulse),bmi=values(bmi),fi=values(fi),fe=values(fe),arest=values(arest),timestamp =NOW(),nid = values(nid),docid=values(docid),prcalc = values(prcalc),id=values(id)  
+          
+saveUser : >-
+ insert into users(username,password,enabled,userid,id,status) values(?,?,1,?,?,'on') on duplicate key update password=values(password),username=values(username),id=values(id)
+ 
+saveUserRole : >-
+ insert into userrole(roleid,username,userrole,userid,useremail,id,status) values(1,?,'NURSE',?,?,?,'on') on duplicate key update username=values(username),id=values(id)
+ 
+fetchAppointmentInfoForNurse : >-
+ select CONCAT(d.fname,' ', d.mname,' ',d.lname) doctor,ap.pid,CONCAT(p.fname,' ', p.mname,' ',p.lname) patient,CONCAT(DATE_FORMAT(ap.appointment, '%d-%m-%Y'),' ',ap.time) appointmenttime,ap.fileno 
+ from appointment ap join patient p on ap.pid=p.pid join doctor d on ap.docid = d.docID  where STR_TO_DATE(ap.appointment, '%Y-%m-%d')= curdate() and ap.id=? order by STR_TO_DATE(appointment, '%Y-%m-%d')desc,time
+ 
+updateNurseStatus : >-
+ update nurse set status= ? where nid= ?              

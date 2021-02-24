@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="printprs" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2d7a0453-f50c-4c46-91c5-f546ea112c51">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="HMS DB"/>
+	<queryString language="SQL">
+		<![CDATA[select * from prescription]]>
+	</queryString>
+	<field name="docid" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="docid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="dname" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dname"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="pid" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="pname" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pname"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="pc" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pc"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="pmsh" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pmsh"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="ph" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ph"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="dh" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dh"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="fh" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="fh"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="ogh" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ogh"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="psh" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="psh"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="sge" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="sge"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="scv" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="scv"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="sres" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="sres"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="sgas" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="sgas"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="smusc" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="smusc"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="sgenit" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="sgenit"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="sendoc" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="sendoc"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="sskin" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="sskin"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="scns" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="scns"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="pge" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pge"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="poc" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="poc"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="pns" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pns"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="pcv" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pcv"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="prs" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="prs"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="pas" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pas"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="pds" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pds"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="pir" class="java.lang.Object">
+		<property name="com.jaspersoft.studio.field.label" value="pir"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="admit" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="admit"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="fileno" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="fileno"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="date" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+	</field>
+	<group name="docid">
+		<groupExpression><![CDATA[$F{docid}]]></groupExpression>
+	</group>
+	<group name="dname">
+		<groupExpression><![CDATA[$F{dname}]]></groupExpression>
+	</group>
+	<group name="pid">
+		<groupExpression><![CDATA[$F{pid}]]></groupExpression>
+	</group>
+	<group name="pname">
+		<groupExpression><![CDATA[$F{pname}]]></groupExpression>
+	</group>
+	<group name="pc">
+		<groupExpression><![CDATA[$F{pc}]]></groupExpression>
+	</group>
+	<group name="pmsh">
+		<groupExpression><![CDATA[$F{pmsh}]]></groupExpression>
+	</group>
+	<group name="ph">
+		<groupExpression><![CDATA[$F{ph}]]></groupExpression>
+	</group>
+	<group name="dh">
+		<groupExpression><![CDATA[$F{dh}]]></groupExpression>
+	</group>
+	<group name="fh">
+		<groupExpression><![CDATA[$F{fh}]]></groupExpression>
+	</group>
+	<group name="ogh">
+		<groupExpression><![CDATA[$F{ogh}]]></groupExpression>
+	</group>
+	<group name="psh">
+		<groupExpression><![CDATA[$F{psh}]]></groupExpression>
+	</group>
+	<group name="sge">
+		<groupExpression><![CDATA[$F{sge}]]></groupExpression>
+	</group>
+	<group name="scv">
+		<groupExpression><![CDATA[$F{scv}]]></groupExpression>
+	</group>
+	<group name="sres">
+		<groupExpression><![CDATA[$F{sres}]]></groupExpression>
+	</group>
+	<group name="sgas">
+		<groupExpression><![CDATA[$F{sgas}]]></groupExpression>
+	</group>
+	<group name="smusc">
+		<groupExpression><![CDATA[$F{smusc}]]></groupExpression>
+	</group>
+	<group name="sgenit">
+		<groupExpression><![CDATA[$F{sgenit}]]></groupExpression>
+	</group>
+	<group name="sendoc">
+		<groupExpression><![CDATA[$F{sendoc}]]></groupExpression>
+	</group>
+	<group name="sskin">
+		<groupExpression><![CDATA[$F{sskin}]]></groupExpression>
+	</group>
+	<group name="scns">
+		<groupExpression><![CDATA[$F{scns}]]></groupExpression>
+	</group>
+	<group name="pge">
+		<groupExpression><![CDATA[$F{pge}]]></groupExpression>
+	</group>
+	<group name="poc">
+		<groupExpression><![CDATA[$F{poc}]]></groupExpression>
+	</group>
+	<group name="pns">
+		<groupExpression><![CDATA[$F{pns}]]></groupExpression>
+	</group>
+	<group name="pcv">
+		<groupExpression><![CDATA[$F{pcv}]]></groupExpression>
+	</group>
+	<group name="prs">
+		<groupExpression><![CDATA[$F{prs}]]></groupExpression>
+	</group>
+	<group name="pas">
+		<groupExpression><![CDATA[$F{pas}]]></groupExpression>
+	</group>
+	<group name="pds">
+		<groupExpression><![CDATA[$F{pds}]]></groupExpression>
+	</group>
+	<group name="pir">
+		<groupExpression><![CDATA[$F{pir}]]></groupExpression>
+	</group>
+	<group name="admit">
+		<groupExpression><![CDATA[$F{admit}]]></groupExpression>
+	</group>
+	<group name="fileno">
+		<groupExpression><![CDATA[$F{fileno}]]></groupExpression>
+	</group>
+	<group name="date">
+		<groupExpression><![CDATA[$F{date}]]></groupExpression>
+	</group>
+	<group name="id">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image onErrorType="Blank">
+				<reportElement x="0" y="0" width="110" height="60" uuid="5c5f98ec-11cf-43f4-94a0-5fdab3a6a321"/>
+				<imageExpression><![CDATA[$P{realPath}+"/Logo/"+$P{realLogo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="380" y="0" width="175" height="20" uuid="82b5b432-91e2-4bf7-bdef-5cbf0e663bbb"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{realName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="20" width="175" height="57" uuid="255f1a7a-9c67-4136-b987-8c01da1c5bfa"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{realAddress}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="215" y="0" width="130" height="49" uuid="9e61046e-a394-4559-92f4-84177e1793df"/>
+				<textElement textAlignment="Center" markup="none">
+					<font size="16"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Print Prescription]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="59" splitType="Stretch">
+			<textField pattern="d/MM/yy h:mm a">
+				<reportElement x="440" y="0" width="94" height="22" uuid="0e625293-8df1-4fa1-9346-c6d97a1ef1b8"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="1" width="50" height="21" uuid="8a9b2cc0-519b-44a5-9178-69432b4908f8"/>
+				<text><![CDATA[Doctor : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="1" width="91" height="21" uuid="3384473a-829a-4897-b5b3-a3602fb456bb"/>
+				<textFieldExpression><![CDATA[$F{pname}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="400" y="0" width="40" height="22" uuid="5637128e-0511-4c5a-b8ef-c9110e8fc14c"/>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="-31" width="70" height="21" uuid="258ac39f-f406-413e-ae7b-8ec8ed386bfe"/>
+				<text><![CDATA[Patient Name : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="91" y="-31" width="91" height="21" uuid="f2372409-ecc9-4077-aa5f-42c64687e936"/>
+				<textFieldExpression><![CDATA[$F{dname}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="400" y="-31" width="40" height="22" uuid="c8973db8-052d-4e40-8401-f72149171b5c"/>
+				<text><![CDATA[Age :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="442" y="-30" width="91" height="21" uuid="d5c1776d-da03-421d-b139-19ae13134dec"/>
+				<textFieldExpression><![CDATA[$F{pid}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="19" y="20" width="526" height="21" uuid="09d4d642-4fd8-4fcd-8224-c6177858d22a"/>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="1" width="70" height="21" uuid="7c2d4288-4c22-47d1-a612-10f21765ed34"/>
+				<text><![CDATA[Diagnosis : ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" mode="Opaque" x="15" y="52" width="525" height="21" uuid="64d4c417-1c2a-43af-93e1-2a6c6fb62c3c">
+					<printWhenExpression><![CDATA[$F{dissum}!=null]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA["Advice : " + $F{admit}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

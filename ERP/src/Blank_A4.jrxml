@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="84289708-7106-49b1-b545-4cb56110f54e">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Dataset1" uuid="c0b9e852-0cbc-4793-bc99-d7f95b3e588e">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MYDB"/>
+		<queryString language="SQL">
+			<![CDATA[select pir from prescription pr2 left outer join doctor d on d.docID = pr2.docid join patient p on pr2.pid = p.pid]]>
+		</queryString>
+		<field name="pir" class="java.lang.Object">
+			<property name="com.jaspersoft.studio.field.label" value="pir"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="prescription"/>
+		</field>
+		<group name="pir">
+			<groupExpression><![CDATA[$F{pir}]]></groupExpression>
+		</group>
+	</subDataset>
+	<parameter name="realPath" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$P{realPath}+"/Images/logocms.jpg"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="realName" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$P{realName}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="realAddress" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$P{realAddress}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="realLogo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{realLogo}]]></defaultValueExpression>
+	</parameter>
+	<field name="pid" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="pname" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pname"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="dname" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dname"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="docid" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="docid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="admdate" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="admdate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="disdate" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="disdate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="treatment" class="java.lang.Object">
+		<property name="com.jaspersoft.studio.field.label" value="treatment"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="dissum" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dissum"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="investigation" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="investigation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="management" class="java.lang.Object">
+		<property name="com.jaspersoft.studio.field.label" value="management"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="fileno" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="fileno"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="admitno" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="admitno"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="freeze" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="freeze"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="dtypeofdr" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dtypeofdr"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="ddrugname" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ddrugname"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="dstrdrug" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dstrdrug"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="ddm" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ddm"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="dda" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dda"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="dde" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dde"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="ddn" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ddn"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="dbaf" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dbaf"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="dtotn" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dtotn"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="dnofdays" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dnofdays"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="dadvice" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dadvice"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="ddosage" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ddosage"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<group name="pid">
+		<groupExpression><![CDATA[$F{pid}]]></groupExpression>
+	</group>
+	<group name="pname">
+		<groupExpression><![CDATA[$F{pname}]]></groupExpression>
+	</group>
+	<group name="dname">
+		<groupExpression><![CDATA[$F{dname}]]></groupExpression>
+	</group>
+	<group name="docid">
+		<groupExpression><![CDATA[$F{docid}]]></groupExpression>
+	</group>
+	<group name="admdate">
+		<groupExpression><![CDATA[$F{admdate}]]></groupExpression>
+	</group>
+	<group name="disdate">
+		<groupExpression><![CDATA[$F{disdate}]]></groupExpression>
+	</group>
+	<group name="treatment">
+		<groupExpression><![CDATA[$F{treatment}]]></groupExpression>
+	</group>
+	<group name="dissum">
+		<groupExpression><![CDATA[$F{dissum}]]></groupExpression>
+	</group>
+	<group name="investigation">
+		<groupExpression><![CDATA[$F{investigation}]]></groupExpression>
+	</group>
+	<group name="management">
+		<groupExpression><![CDATA[$F{management}]]></groupExpression>
+	</group>
+	<group name="fileno">
+		<groupExpression><![CDATA[$F{fileno}]]></groupExpression>
+	</group>
+	<group name="admitno">
+		<groupExpression><![CDATA[$F{admitno}]]></groupExpression>
+	</group>
+	<group name="freeze">
+		<groupExpression><![CDATA[$F{freeze}]]></groupExpression>
+	</group>
+	<group name="id">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+	</group>
+	<group name="dtypeofdr">
+		<groupExpression><![CDATA[$F{dtypeofdr}]]></groupExpression>
+	</group>
+	<group name="ddrugname">
+		<groupExpression><![CDATA[$F{ddrugname}]]></groupExpression>
+	</group>
+	<group name="dstrdrug">
+		<groupExpression><![CDATA[$F{dstrdrug}]]></groupExpression>
+	</group>
+	<group name="ddm">
+		<groupExpression><![CDATA[$F{ddm}]]></groupExpression>
+	</group>
+	<group name="dda">
+		<groupExpression><![CDATA[$F{dda}]]></groupExpression>
+	</group>
+	<group name="dde">
+		<groupExpression><![CDATA[$F{dde}]]></groupExpression>
+	</group>
+	<group name="ddn">
+		<groupExpression><![CDATA[$F{ddn}]]></groupExpression>
+	</group>
+	<group name="dbaf">
+		<groupExpression><![CDATA[$F{dbaf}]]></groupExpression>
+	</group>
+	<group name="dtotn">
+		<groupExpression><![CDATA[$F{dtotn}]]></groupExpression>
+	</group>
+	<group name="dnofdays">
+		<groupExpression><![CDATA[$F{dnofdays}]]></groupExpression>
+	</group>
+	<group name="ddosage">
+		<groupExpression><![CDATA[$F{ddosage}]]></groupExpression>
+	</group>
+	<group name="dadvice">
+		<groupExpression><![CDATA[$F{dadvice}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image onErrorType="Blank">
+				<reportElement x="0" y="0" width="110" height="60" uuid="0b19c1f2-5b42-415e-958c-0dbe99bafd90"/>
+				<imageExpression><![CDATA[$P{realPath}+"/Logo/"+$P{realLogo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="380" y="0" width="175" height="20" uuid="e1bca09f-c2dd-445c-8ea5-5c3866e13098"/>
+				<textFieldExpression><![CDATA[$P{realName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="20" width="175" height="57" uuid="e7e0f282-63c4-40be-abfc-3ff90196f7b3"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{realAddress}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement x="420" y="6" width="40" height="30" uuid="4751c067-922e-4ed9-9888-634fc921386e"/>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<textField pattern="d/MM/yy h:mm a">
+				<reportElement x="461" y="6" width="75" height="30" uuid="de5aa146-b65a-4380-b7b4-0b33143bcec8"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="180" y="0" width="200" height="49" uuid="6420ef6e-6e60-44ac-8c1a-eb5a6d3f59c4"/>
+				<textElement textAlignment="Center" markup="none">
+					<font size="16"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Patient Admission History]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="9" y="0" width="68" height="20" uuid="680a9e08-0f3e-44e7-a068-6c5b72b36a13"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Patient Name :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="78" y="0" width="169" height="20" uuid="f493d525-0cca-45cb-bb83-fda8aee18b24"/>
+				<textFieldExpression><![CDATA[$F{pname}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="300" y="1" width="71" height="20" uuid="45cab244-3e5d-44a8-9b2d-bc07a58d666c"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Patient Id :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="372" y="1" width="169" height="20" uuid="e6470841-b69a-44f3-a15c-4086d6dbd931"/>
+				<textFieldExpression><![CDATA[$F{pid}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="361" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="6" width="40" height="21" backcolor="#51E8E8" uuid="6f841d4b-de80-46f5-aa06-0475cef8338b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[File No : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="50" y="6" width="100" height="21" uuid="20075dea-5bf9-4221-bf6b-8b4e677fb2e1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fileno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="198" y="6" width="40" height="21" uuid="3e53a181-462b-42f6-99c9-c6108dd91ac0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Doctor : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="238" y="6" width="102" height="21" uuid="6ded14b0-8c87-4a0a-a3f4-9d7f99ecb447"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dname}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="370" y="7" width="86" height="21" uuid="f8b74df6-17b2-4707-8b98-1882cfa1e094"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Admission Date : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="457" y="7" width="82" height="21" uuid="0ac64d82-ae95-4728-af17-3dbecb181cb9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{admdate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" mode="Opaque" x="16" y="100" width="525" height="21" uuid="7a6c6028-8304-4920-a793-e01201387f52">
+					<printWhenExpression><![CDATA[$F{dissum}!=null]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA["Discharge Summary :" + $F{dissum}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="15" y="70" width="526" height="21" uuid="55f5bedf-c3f7-473d-a746-3159897634bb"/>
+				<textFieldExpression><![CDATA[$F{investigation}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="310" y="38" width="43" height="21" uuid="e666dad1-6f32-43a6-af22-b5cf4cd2d6bf"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Branch : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="353" y="38" width="117" height="21" uuid="1d2641cb-62c2-4aed-a4b1-711cd39c279c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{management}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="60" y="37" width="56" height="21" uuid="83a8de53-46ea-48be-a3c5-7c48be752333"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Admitted : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="116" y="37" width="70" height="21" uuid="af14a9c3-bbf4-47ee-81af-5ea31641a677"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{freeze}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="9" y="140" width="200" height="150" uuid="bf63f69c-fc8c-4eca-85b5-95961c173248">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Dataset1" uuid="bfcb9df0-7bd2-4b17-b14a-502938e857ac">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="200" uuid="18a7ae62-d748-40f4-9713-aa72e10ba08f">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="200" height="30" uuid="64b1fc56-5cc6-4985-be9f-5f14c8193242"/>
+								<text><![CDATA[pir]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="200" height="30" uuid="e4dab7f2-0d51-45ef-a6b1-f53838456118"/>
+								<textFieldExpression><![CDATA[$F{pir}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

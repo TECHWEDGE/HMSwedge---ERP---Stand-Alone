@@ -1,0 +1,64 @@
+getBranch: >-
+  select id,name,address,logo,logoname,type from branchdetails
+  
+getBranchForId: >-
+  select name,address,logo,logoname from branchdetails where id=?
+  
+saveBranch: >-
+  insert into branchdetails(id,name,address,logo,logoname,type) values((SELECT MAX(id) + 1 from branchdetails br),?,?,?,?,?)
+  
+updBranch: >-
+  update branchdetails set name=?,address=?,logoname=?,logo=?,type=? where id=?
+  
+getInvprod: >-
+  select prid,prcode,prname,prcategory,prtype from invproduct
+  
+saveInvprod: >-
+  insert into invproduct(prcode,prname,prcategory,prtype) values(?,?,?,?)
+  
+updInvprod: >-
+  update invproduct set prcode=?,prname=?,prcategory=?,prtype=? where prid=?
+  
+getPatientId: >-
+  select max(CAST(SUBSTRING_INDEX(pid,'-',-1) as decimal)) as maxid from patient
+  
+getPatientId1: >-
+  select pid,fname,lname,regdate,dob,age,gender,mstatus,pofvisit,landphone,mobile,email,ssn,address,city,country,pcode,ethnicity,mname,CONCAT(fname,' ', mname,' ',lname) as name,state,child,mo,fo,modate,fodate from patient order by pid desc limit ?
+  
+getPatientId1Filter: >-
+  select pid,fname,lname,regdate,dob,age,gender,mstatus,pofvisit,landphone,mobile,email,ssn,address,city,country,pcode,ethnicity,mname,CONCAT(fname,' ', mname,' ',lname) as name,state,child,mo,fo,modate,fodate from patient where (fname like ? or lname like ? or mname like ?) and pid like ? order by pid desc limit ?
+  
+savePatient: >-
+  insert into patient (pid,fname,lname,regdate,dob,age,gender,mstatus,pofvisit,landphone,mobile,email,ssn,address,city,country,pcode,ethnicity,mname,state,child,mo,fo,modate,fodate) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) on duplicate key update fname=?,lname=?,regdate=?,dob=?,age=?,gender=?,mstatus=?,pofvisit=?,landphone=?,mobile=?,email=?,ssn=?,address=?,city=?,country=?,pcode=?,ethnicity=?,mname=?,state=?,child=?,mo=?,fo=?,modate=?,fodate=?
+  
+savePatientInsurance: >-
+  insert into insurance (pid,pins,sins,grp1,grp2,gid1,gid2,ph1,ph2,policyh1,policyh2) values(?,?,?,?,?,?,?,?,?,?,?) on duplicate key update pins = ?,sins=?,grp1=?,grp2=?,gid1=?,gid2=?,ph1=?,ph2=?,policyh1=?,policyh2=?
+  
+getInsurance: >-
+   select pins,sins,grp1,grp2,gid1,gid2,ph1,ph2,policyh1,policyh2 from insurance where pid=?
+
+getAdditional: >-
+  select personname,relationship,employer,rdateofbirth,ager,workphone,mobilephone,raddress,rprovince,rstate,rcountry,spname,spdate,nofon,nofphone,referrence,family,allergies,presurgery,testrelease,spouse from additionalinfo where pid =?
+  
+getNurseId: >-
+  select max(CAST(SUBSTRING_INDEX(nid,'-',-1) as decimal)) as nid from nurse
+
+getNurseId1: >-  
+  select nid,fname,lname,joindate,dob,age,gender,mname,regno,landphone,mobile,email,ssn,address,city,country,pcode,state,prfshift,emptype,dept,desg,specialization,qualification,CONCAT(fname,' ', mname,' ',lname) as fullname,(select username from users where users.userid = nurse.nid ) as username,(select password from users where users.userid = nurse.nid) as password from nurse
+  
+  
+savePatientaddition: >-
+  insert into additionalinfo (pid,personname,relationship,employer,rdateofbirth,ager,workphone,mobilephone,raddress,rprovince,rstate,rcountry,spname,spdate,nofon,nofphone,referrence,family,allergies,presurgery,testrelease,spouse) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) on duplicate key update personname=?,relationship =?,employer=?,rdateofbirth=?,ager=?,workphone=?,mobilephone=?,raddress=?,rprovince=?,rstate=?,rcountry=?,spname=?,spdate=?,nofon=?,nofphone=?,referrence=?,family=?,allergies=?,presurgery=?,testrelease=?,spouse=
+
+saveNurse: >-  
+  insert into nurse(nid,fname,mname,lname,joindate,dob,age,gender,regno,landphone,mobile,email,ssn,address,city,country,pcode,state,prfshift,emptype,dept,desg,specialization,qualification,id,status) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) on duplicate key update fname=?,mname=?,lname=?,joindate=?,dob=?,age=?,gender=?,regno=?,landphone=?,mobile=?,email=?,ssn=?,address=?,city=?,country=?,pcode=?,state=?,prfshift =?,emptype=?,dept=?,desg=?,specialization=?,qualification=?,id=?
+  
+getAssistantId: >-
+  select max(CAST(SUBSTRING_INDEX(aid,'-',-1) as decimal)) as maxid from assistant
+  
+getAssistantId1: >-
+  select aid,fname,lname,joindate,dob,age,gender,mname,regno,landphone,mobile,email,ssn,address,city,country,pcode,state,prfshift,emptype,dept,desg,specialization,qualification,(select username from users where users.userid = assistant.aid ) as username,(select password from users where users.userid = assistant.aid)  as password from assistant
+  
+saveAssistant: >-
+  insert into assistant(aid,fname,mname,lname,joindate,dob,age,gender,regno,landphone,mobile,email,ssn,address,city,country,pcode,state,prfshift,emptype,dept,desg,specialization,qualification) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) on duplicate key update fname=?,mname=?,lname=?,joindate=?,dob=?,age=?,gender=?,regno=?,landphone=?,mobile=?,email=?,ssn=?,address=?,city=?,country=?,pcode=?,state=?,prfshift =?,emptype=?,dept=?,desg=?,specialization=?,qualification=?
+  

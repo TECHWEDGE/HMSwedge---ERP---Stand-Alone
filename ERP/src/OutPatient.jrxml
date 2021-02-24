@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OutPatient" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="03bbc34e-1d1a-4f4e-8e82-3b3ca109f31c">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="HMS DB"/>
+	<queryString language="SQL">
+		<![CDATA[select * from discharge]]>
+	</queryString>
+	<field name="pid" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="pname" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pname"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="dname" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dname"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="docid" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="docid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="admdate" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="admdate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="disdate" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="disdate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="treatment" class="java.lang.Object">
+		<property name="com.jaspersoft.studio.field.label" value="treatment"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="dissum" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dissum"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="investigation" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="investigation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="management" class="java.lang.Object">
+		<property name="com.jaspersoft.studio.field.label" value="management"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="fileno" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="fileno"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="admitno" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="admitno"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="freeze" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="freeze"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="discharge"/>
+	</field>
+	<group name="pid">
+		<groupExpression><![CDATA[$F{pid}]]></groupExpression>
+	</group>
+	<group name="pname">
+		<groupExpression><![CDATA[$F{pname}]]></groupExpression>
+	</group>
+	<group name="dname">
+		<groupExpression><![CDATA[$F{dname}]]></groupExpression>
+	</group>
+	<group name="docid">
+		<groupExpression><![CDATA[$F{docid}]]></groupExpression>
+	</group>
+	<group name="admdate">
+		<groupExpression><![CDATA[$F{admdate}]]></groupExpression>
+	</group>
+	<group name="disdate">
+		<groupExpression><![CDATA[$F{disdate}]]></groupExpression>
+	</group>
+	<group name="treatment">
+		<groupExpression><![CDATA[$F{treatment}]]></groupExpression>
+	</group>
+	<group name="dissum">
+		<groupExpression><![CDATA[$F{dissum}]]></groupExpression>
+	</group>
+	<group name="investigation">
+		<groupExpression><![CDATA[$F{investigation}]]></groupExpression>
+	</group>
+	<group name="management">
+		<groupExpression><![CDATA[$F{management}]]></groupExpression>
+	</group>
+	<group name="fileno">
+		<groupExpression><![CDATA[$F{fileno}]]></groupExpression>
+	</group>
+	<group name="admitno">
+		<groupExpression><![CDATA[$F{admitno}]]></groupExpression>
+	</group>
+	<group name="freeze">
+		<groupExpression><![CDATA[$F{freeze}]]></groupExpression>
+	</group>
+	<group name="id">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

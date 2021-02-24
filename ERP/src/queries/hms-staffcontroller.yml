@@ -1,0 +1,20 @@
+getAssistantId: >-
+  select max(CAST(SUBSTRING_INDEX(aid,'-',-1) as decimal)) as maxid from assistant
+  
+getAssistantId1: >-
+  select a.aid,a.fname,a.lname,a.joindate,a.dob,a.age,a.gender,a.mname,a.regno,a.landphone,a.mobile,a.email,a.ssn,a.address,a.city,a.country,a.pcode,a.state,a.prfshift,a.emptype,a.dept,a.desg,a.specialization,a.qualification,(select username from users where users.userid = a.aid ) as username,(select password from users where users.userid = a.aid) as password,a.address2,b.id,b.name,a.status from assistant a join branchdetails b on b.id = a.id where DATE_FORMAT(STR_TO_DATE(a.joindate, '%Y-%m-%d'),'%Y-%m-%d') between DATE_FORMAT(STR_TO_DATE(?, '%Y-%m-%d'),'%Y-%m-%d') and DATE_FORMAT(STR_TO_DATE(?, '%Y-%m-%d'),'%Y-%m-%d')order by CAST(SUBSTRING_INDEX(a.aid,'-',-1) as decimal) desc limit ?
+  
+getAssistantId1Filter: >-
+  select a.aid,a.fname,a.lname,a.joindate,a.dob,a.age,a.gender,a.mname,a.regno,a.landphone,a.mobile,a.email,a.ssn,a.address,a.city,a.country,a.pcode,a.state,a.prfshift,a.emptype,a.dept,a.desg,a.specialization,a.qualification,(select username from users where users.userid = a.aid ) as username,(select password from users where users.userid = a.aid) as password,a.address2,b.id,b.name,a.status from assistant a join branchdetails b on b.id = a.id where DATE_FORMAT(STR_TO_DATE(a.joindate, '%Y-%m-%d'),'%Y-%m-%d') between DATE_FORMAT(STR_TO_DATE(?, '%Y-%m-%d'),'%Y-%m-%d') and DATE_FORMAT(STR_TO_DATE(?, '%Y-%m-%d'),'%Y-%m-%d') and (a.fname like ? or a.mname like ? or a.lname like ?) order by CAST(SUBSTRING_INDEX(a.aid,'-',-1) as decimal) desc limit ?
+    
+saveAssistant: >-
+  insert into assistant(aid,fname,mname,lname,joindate,dob,age,gender,regno,landphone,mobile,email,ssn,address,city,country,pcode,state,prfshift,emptype,dept,desg,specialization,qualification,address2,id,status) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) on duplicate key update fname=?,mname=?,lname=?,joindate=?,dob=?,age=?,gender=?,regno=?,landphone=?,mobile=?,email=?,ssn=?,address=?,city=?,country=?,pcode=?,state=?,prfshift =?,emptype=?,dept=?,desg=?,specialization=?,qualification=?,address2=?,id=?
+  
+saveuser: >-
+  insert into users(username,password,enabled,userid,id,status) values(?,?,1,?,?,?) on duplicate key update password = ?, username = ?,id=?
+  	
+saveuserrole: >-
+  insert into userrole(roleid,username,userrole,userid,useremail,id,status) values(?,?,?,?,?,?,?) on duplicate key update username = ?,id=?
+  
+updateAssistantStatus : >-
+ update assistant set status = ? where aid = ?  

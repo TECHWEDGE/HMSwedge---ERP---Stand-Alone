@@ -1,0 +1,350 @@
+getManufacturer: >-
+  select max(mid) as maxid from manufacture
+
+saveManufacture: >-
+  insert into manufacture(name,type,address1,address2,city,state,country,pincode,phone,mobile,fax,email,comment,active,mid) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) on duplicate key update name='?,type=?,address1 =?,address2=?,city='?,state=?,country=?,pincode=?,phone=?,mobile=?,fax=?,email=?,comment=?,active=? 
+
+getManufactureName: >-
+  select distinct name,type,address1,address2,city,state,country,pincode,phone,mobile,fax,email,comment,mid,active from manufacture order by name
+
+getManufacturename1: >-
+  select distinct name,type,address1,address2,city,state,country,pincode,phone,mobile,fax,email,comment,mid,active where active=? from manufacture order by name
+
+getcheckmname1: >-
+  select name from manufacture where name = ?
+
+getS: >-
+  select max(sid) as maxid from supply
+
+getSupplyname: >-
+  select name,type,address1,address2,city,state,country,pincode,phone,mobile,fax,email,poc,pc,website,manufacturers,comment,active,sid from supply where active=? order by name
+
+getSuplyname1: >-
+  	select name,type,address1,address2,city,state,country,pincode,phone,mobile,fax,email,poc,pc,website,manufacturers,comment,active,sid from supply order by name
+
+getchecksname1: >-
+  select name from supply where name = ? 
+
+getCustomername: >-
+  select customer,name,phone,age,sex,type from customer where active = ? order by name limit ?
+
+getCustomernamed: >-
+  select customer,name,phone,age,sex,type from dcustomer where active = ? order by name limit ?
+
+getCustomernameFilter: >-
+  select customer,name,phone,age,sex,type from customer where active = ? and (name like ? and customer like ?) order by name limit ?
+  	
+getCustomername1: >-
+  select customer,name,type,age,sex,phone,address1,address2,mobile,city,fax,state,email,country,comment,pincode,active from customer order by name 
+
+getCustomername1s: >-
+  select customer,name,type,age,sex,phone,address1,address2,mobile,city,fax,state,email,country,comment,pincode,active from dcustomer order by name
+
+getCustomerId: >-
+  select  max(CAST(SUBSTRING_INDEX(customer,'-',-1) as decimal)) as id from customer where date = curdate() 
+
+getCustomerIdd: >-
+  select  max(CAST(SUBSTRING_INDEX(customer,'-',-1) as decimal)) as id from dcustomer where date = curdate()
+
+getcheckcphone: >-
+  select phone from customer where phone = ?
+
+getcheckcphoned: >-
+  select phone from dcustomer where phone = ?
+
+getP: >-
+  select max(pid) as pid from product
+
+search: >-
+  select name,descr,pc,prc,manufacturer,composition,sp,bc,mc,rl,rq,doc,dsc,supplier,(select sum(quantity) as qty from purchase where purchase.productName = product.name ) from product where active =  ? order by name
+
+search1: >-
+  select name,descr,pc,prc,manufacturer,composition,sp,bc,mc,rl,rq,doc,dsc,supplier,(select sum(currentstock) from productstock where product.name = productstock.name group by name) as sum,active,pid,dps,dsp from product where active = ? order by name
+
+search3: >-
+  select name,prc,pid from product where active =  ? limit ?
+
+search3Filter: >-
+  select name,prc,pid from product where active =  ? and ( name like ? and prc like ?) limit ?
+
+getcheckpcode: >-
+  select prc from product where prc = ?
+
+getcheckpname: >-
+  select name from product where name = ?
+
+searchProduct: >-
+  select name,supplier,bc,rq,prc,(select sum(currentstock) from productstock where active =? and productstock.name = product.name) as sumstock,dps,pid from product order by name limit ?
+
+searchProductFilter: >-
+  select name,supplier,bc,rq,prc,(select sum(currentstock) from productstock where productstock.name = product.name) as sumstock,dps,pid from product where (product.name like ? and product.prc like ? ) order by name limit ?
+
+Reorder: >-
+  select pr.name as name,pr.prc as prc,sum(ps.currentstock) as sumstocl,pr.dps as dps,pr.pid as pid from product pr left outer join  productstock ps on pr.name = ps.name where CAST(pr.rq as decimal)>= CAST(ps.currentstock as decimal) and rlflag = ? group by pr.name	
+
+searchRq: >-
+  select name,supplier,bc,rq from product where rq in (select quantity from  purchase) and name not in (select productName from orderho) and active = ?
+
+getCurrentstks: >-
+  select productName,quantity from purchase
+
+getorderId: >-
+  SELECT CONCAT('?','-',COALESCE(MAX(CAST(SUBSTRING_INDEX(o.orderid,'-',-1)+1 as decimal)),1)) as id from orderho o where SUBSTRING_INDEX(o.orderDate,' ',1) = DATE_FORMAT(curdate(),'%d-%m-%Y') and o.id = ?
+
+getorderDetails: >-
+  select distinct orderid  as id from orderho where active = 'active' id= ? limit ?
+
+getorderDetailsFilter: >-
+  select distinct orderid  as id from orderho where id= ? and orderid like ? limit ?
+
+getorderDetails1: >-
+  select distinct o.orderid as id,o.orderDate as orderdate,o.author as author,o.Supplier as supplier,o.ean as ean,o.productName as productname,o.unit as unit,o.quantity as quantity,o.stock as stock,o.count as count,o.pid as pid from orderho o where id = ? and orderid = ? order by orderid,productName
+
+getinvId: >-
+  select CONCAT(?,'-',COALESCE(MAX(CAST(SUBSTRING_INDEX(o.invoice,'-',-1)+ 1 as decimal)),1)) as id from saleho o where o.invoiceDate = curdate() and o.id = ?	
+
+getinvIdd: >-
+  select CONCAT(?,'-',COALESCE(MAX(CAST(SUBSTRING_INDEX(o.invoice,'-',-1)+ 1 as decimal)),1)) as id from dsaleho o where o.invoiceDate = curdate() and o.id = ?
+
+getinvId1: >-
+  select distinct(invoice) as invoiceid from saleho where id=? limit ?	
+
+getinvId1d: >-
+  select distinct(invoice) as invoiceid from dsaleho where id=? limit ?	
+
+getinvId1Filter: >-
+  select distinct(invoice) as invoiceid from saleho where id=? and invoice like ? limit ?
+
+getinvId1Filterd: >-
+  select distinct(invoice) as invoiceid from dsaleho where id=? and invoice like ? limit ?
+
+getProducts: >-
+  select ean,productName,Batch,expDate,unit,unitprice,quantity,total,id from purchase where id=? order by productName
+
+getProductsd: >-
+  select ean,productName,Batch,expDate,unit,unitprice,quantity,total,id from purchase where id=? order by productName
+
+getTax: >-
+  select taxName	, percentage, description, active	 from  tax_ho
+
+getSpdissp: >-
+  select value, startdate, enddate, distype, discode	, active	from discountho
+
+getCustDis: >-
+  select type, dtype, value from custdischo
+
+getBranchProducts: >-
+  select branchid from distribute where branchid not in (select branchid from  distributep)
+
+getAllocation: >-
+  select right(max(allocationid),1) as allocation from distributep where allocationdate = curdate()	
+
+getBrdetails: >-
+  select branchid,productName,unit,reqqty from distribute where branchid = ?
+
+getquotation: >-
+  select custId,quotation from quotation where custId = ?
+
+getquotationid: >-
+  select right(max(quotation),1) as maxquotation from quotation where quotationdate = curdate()
+
+updproforma: >-
+  select quotation,quotationdate,author,cdiscount,custId,custName,custPhone,gender,age,ean,pname,unit,unitprice,quantity,free,stock,total,titems,subt,discount,tax,gtotal from quotation where quotation=?
+
+updhistory: >-
+  select quotation,quotationdate,custName,subt,discount,tax,gtotal,status from quotation
+
+getOrderid: >-
+  select distinct as id name from supply where active = ?
+
+getAllocationid: >-
+  SELECT CONCAT('?','-',COALESCE(MAX(CAST(SUBSTRING_INDEX(a.allocationid,'-',-1) + 1 as decimal)),1)) as id from purchase a where a.id = ?
+
+getAllocationid1a: >-
+  select distinct allocationid as id from purchase where id= ? order by CAST(SUBSTRING_INDEX(allocationid,'-',-1) as decimal) desc limit ?
+
+getAllocationid1ad: >-
+  select distinct allocationid as id from dpurchase where id= ? order by CAST(SUBSTRING_INDEX(allocationid,'-',-1) as decimal) desc limit ?
+
+getAllocationid1aFilter: >-
+  select distinct allocationid as id from purchase where id=? and allocationid like ? order by CAST(SUBSTRING_INDEX(allocationid,'-',-1) as decimal) desc limit ?
+
+getsupplyorder: >-
+  select name,prc,pid as pid from product where supplier like ? and active =  ? limit ?
+
+getsupplyorderFilter: >-
+  	select name,prc,pid from product where (supplier like ? and name like ? and prc like ?) and active =  ? limit ? 
+
+getInfoSearchs: >-
+  select code,name,batch,cp,(select pc from product where prc=code) as pc,rmp,wmp,((cp*(rmp/100))+cp) as rbsp,((cp*(wmp/100))+cp) as wbsp,sp from productprice	
+
+getInfoSearch1: >-
+  select distinct pc as pc from product limit ?
+
+getInfoSearch1Filter: >-
+  select distinct pc as pc from product where pc like ? limit ?
+
+getproSearch1: >-
+  select code,name,batch,cp,category,rmp,wmp,((cp*(rmp/100))+cp) as rbsp,((cp*(wmp/100))+cp) as wbsp,sp from productprice where code like ? limit ?
+
+getproSearch2: >-
+  select code,name,batch,cp,category,rmp,wmp,((cp*(rmp/100))+cp) as rbsp,((cp*(wmp/100))+cp) as wbsp,sp from productprice  where name like ? limit ?
+
+getproSearch3: >-
+  select code,name,batch,cp,category,rmp,wmp,((cp*(rmp/100))+cp) as rbsp,((cp*(wmp/100))+cp) as wbsp,sp from productprice where name like ? and category =? limit ?
+
+getInfoStkSearch: >-
+  select pr.prc as prc,pr.name as name,p.batch as batch,p.expdate as expdate,pr.pc as pc,p.mpack as mpack,p.mpsize as mpsize,p.cp as cp,p.prqty as prqty,p.prprice as prprice,p.currentstock as currentstock,p.sudesc as sudesk,p.stkpr as stkpr,p.markup as markup,p.sp as sp,p.spdesc as spdesc,p.spsize as spsize,p.stksp as stksp,p.sellqty as sellqty,p.sunits as sunits,p.tprice as tprice,p.pid as pid,(select COALESCE(SUM(ps.currentstock),0) from productstock ps where ps.pid = p.pid and ps.id = ?) as currstock from productstock p join product pr on pr.pid = p.pid where p.id =? order by pr.name
+
+getInfoStkSearchd: >-
+  select pr.prc as prc,pr.name as name,p.batch as batch,p.expdate as expdate,pr.pc as pc,p.mpack as mpack,p.mpsize as mpsize,p.cp as cp,p.prqty as prqty,p.prprice as prprice,p.currentstock as currentstock,p.sudesc as sudesc,p.stkpr as stkpr,p.markup as markup,p.sp as sp,p.spdesc as spdesc,p.spsize as spsize,p.stksp as stksp,p.sellqty as sellqty,p.sunits as sunits,p.tprice as tprice,p.pid as pid,(select COALESCE(SUM(ps.currentstock),0) from dproductstock  ps where ps.pid = p.pid and ps.id = ?) as currstock from dproductstock p join product pr on pr.pid = p.pid where p.id = ? order by pr.name
+
+getInfoStkSearch1: >-
+  select pr.prc as prc,pr.name as name,p.batch as batch,p.expdate as expdate,pr.pc as pc,p.mpack as mpack,p.mpsize as mpsize,p.cp as cp,p.prqty as prqty,p.prprice as prprice,p.currentstock as curentstock,p.sudesc as sudesc,p.stkpr as stkpt,p.markup as markup,p.sp as sp,p.spdesc as spdesc,p.spsize as spsize,p.stksp as stksp,p.sellqty as sellqty,p.sunits as sunits,p.tprice as tprice,p.pid as pid,(select COALESCE(SUM(ps.currentstock),0) from productstock ps where ps.pid = p.pid and ps.id = ?) as currstock,p.status as status,p.uqk as uqk from productstock p join product pr on pr.pid = p.pid where p.id =? and p.status='on' order by pr.name 
+
+getPrpur: >-
+  select s.allocationid allocationid,s.receiveddate as receiveddate,s.productName as productName,s.Batch as Batch,s.expDate as expDate,s.quantity as quantity,s.unitprice as unitprice,s.discount as discount,s.total as total,s.ean as ean,s.grandTotal as grandTotal,s.supplierInvoice,s.mpack as mpack,s.mdesc as mdesc,s.sudesc as sudesc,s.free as fee,s.supplier as supplier from productstock s where allocationid =?
+
+getPrpurd: >-
+  	select s.allocationid allocationid,s.receiveddate as receiveddate,s.productName as productName,s.Batch as Batch,s.expDate as expDate,s.quantity as quantity,s.unitprice as unitprice,s.discount as discount,s.total as total,s.ean as ean,s.grandTotal as grandTotal,s.supplierInvoice,s.mpack as mpack,s.mdesc as mdesc,s.sudesc as sudesc,s.free as fee,s.supplier as supplier from dpurchase s where allocationid =?
+  	
+getinvprods: >-
+  select ps.batch as batch,ps.expdate as expdate,ps.spdesc as spdesc,ps.spsize as spsize,ps.currentstock as currentstock,ps.sudesc as sudesc,ps.sp as sp,ps.cp as cp,ps.sellqty as sellqty,ps.sunits as sunits,ps.pid as pid from  productstock ps where ps.id=? and ps.pid = ? and ps.currentstock <> 0 and ps.expdate >= curdate() 
+
+getinvprodsd: >-
+  select ps.batch as batch,ps.expdate as expdate,ps.spdesc as spdesc,ps.spsize as spsize,ps.currentstock as currentstock,ps.sudesc as sudesc,ps.sp as sp,ps.cp as cp,ps.sellqty as sellqty,ps.sunits as sunits,ps.pid as pid from  dproductstock ps where ps.id=? and ps.pid = ? and ps.currentstock <> 0 and ps.expdate >= curdate() 
+
+getsaleReports: >-
+  select distinct s.invoice as invoice ,s.invoiceDate as invoiceDate,s.custName as custName,s.cdiscount as cdiscount,s.tax as tax,s.gtotal as gtotal from saleho s where s.invoicedate between ? and ?
+
+getsaleReportsd: >-
+  select distinct s.invoice as invoice ,s.invoiceDate as invoiceDate,s.custName as custName,s.cdiscount as cdiscount,s.tax as tax,s.gtotal as gtotal from dsaleho s where s.invoicedate between ? and ?
+
+getBatdet: >-
+  select p.batch as batch,p.expdate as expdate ,p.mpsize as mpsize,p.cp as cp from productstock p where p.batch = ? and p.name= ? and p.id = ?
+
+getBatdetd: >-
+  select p.batch as batch,p.expdate as expdate ,p.mpsize as mpsize,p.cp as cp from dproductstock p where p.batch = ? and p.name= ? and p.id = ?
+
+getBranchPRS: >-
+  select COALESCE(sum(currentstock),0) as currstock from productstock where id = ? and pid=?
+saves: >-
+  insert into supply(name,type,address1,address2,city,state,country,pincode,phone,mobile,fax,email,poc,pc,website,manufacturers,comment,active,sid) values( ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) on duplicate key update name=? ,type=?,address1 =?,address2=?,city=?,state=?,country=?,pincode=?,phone=?,mobile=?,fax=?,email=?,poc=?,pc=?,website=?,manufacturers=?,comment=?,active=?;
+
+savec: >-
+  insert into customer(customer,name,type,age,sex,phone,address1,address2,mobile,city,fax,state,email,country,comment,pincode,active,date) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,curdate()) on duplicate key update name = ?,type = ?,age=?,sex =?,phone=?,address1 = ?,address2 = ?,mobile = ?,city = ?,fax =?,state=?,email=?,country=?,comment=?,pincode=?,active=?,date=curdate()
+
+savecd: >-
+  insert into dcustomer(customer,name,type,age,sex,phone,address1,address2,mobile,city,fax,state,email,country,comment,pincode,active,date) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,curdate()) on duplicate key update name = ?,type = ?,age=?,sex =?,phone=?,address1 = ?,address2 = ?,mobile = ?,city = ?,fax =?,state=?,email=?,country=?,comment=?,pincode=?,active=?,date=curdate()
+
+updatec: >-
+  update customer set name = ? ,type =?', age=? ,sex = ?, phone = ?, address1 = ?, address2 = ?, mobile=?, city= ?, fax = ?, state =?, email=?, country=?, comment=?,pincode = ?, active = ? where customer = ?
+
+savep: >-
+  insert into product(name,descr,pc,prc,manufacturer,composition,sp,bc,mc,rl,rq,doc,dsc,supplier,active,date,dps,dsp) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,curdate(),?,?) on duplicate key update name = ?, descr = ?,pc=?,prc = ?,manufacturer = ?,composition = ?,sp = ?,bc = ?,mc = ?,rl=?,rq=?,doc = ?,dsc=?,supplier=?,active=?,dps=?,dsp=?
+
+updatesavep: >-
+  update product set name = ?, descr = ?,pc=?,prc = ?,manufacturer = ?,composition = ?,sp = ?,bc = ?,mc = ?,rl=?,rq=?,doc = ?,dsc=?,supplier=?,active=?,dps=?,dsp=? where pid = ?
+
+saveo: >-
+  insert into orderho(orderid,orderDate,author,productName,Supplier,unit,quantity,count,active,stock,ean,id,pid) values(?,?,?,?,?,?,?,?,?,?,?,?,?) on duplicate key update orderDate=?,Supplier=?,author=?,productName=?,unit=?,quantity=?,count=?,active=?,stock=?,ean=?,id=?,pid=?
+
+Updsaveo: >-
+  update orderho set orderDate=?,Supplier=?,author=?,productName=?,unit=?,quantity=?,count=?,active=?,stock=?,ean=? where id= ? and orderid=? and pid=?
+
+getinvIdd: >-
+  select CONCAT('" + s.getInvoice()
+  			+ "','-',COALESCE(MAX(CAST(SUBSTRING_INDEX(o.invoice,'-',-1)+ 1 as decimal)),1)) from " + table
+  			+ " o where o.invoiceDate = curdate() and o.id = '" + no + "')	
+savess: >-
+  insert into productstock(invoice,invoiceDate,author,cdiscount,custId,custName,custPhone,gender,age,ean,pname,batch,expDate,stock,unit,quantity,unitprice,total,titems,subt,discount,tax,gtotal,spack,spsize,sudesc,fileno,id,pid) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+
+savess: >-
+  insert into dproductstock(invoice,invoiceDate,author,cdiscount,custId,custName,custPhone,gender,age,ean,pname,batch,expDate,stock,unit,quantity,unitprice,total,titems,subt,discount,tax,gtotal,spack,spsize,sudesc,fileno,id,pid) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+
+updatestat: >-
+  update quotation set status = ? where quotation= ?
+
+updateean: >-
+  update productprice set code =(select prc from product where name=?) where name=?;
+
+saveproductpriceho: >-
+  insert into productprice(name,batch,cp,sp) values(?,?,?,?)
+
+updatecatho: >-
+  update purchase set category = (select pc from product where name=?) where productName=? and id=? and pid=?
+
+getOrdersupplier: >-
+  select orderid from orderho
+
+updatecatho2: >-
+  update productstock set category = (select pc from product where name=?) where name=? and id=? and pid = ?
+
+updatecatho1: >-
+  update productprice set category = (select pc from product where name=?) where name=?
+
+dupdateean: >-
+  update dproductprice set code =(select prc from product where name=?) where name=?
+
+dupdatecatho: >-
+  update dpurchase set category = (select pc from product where name=?) where id=? and productName=?
+
+dsaveproductstockho: >-
+  insert into dproductstock(code,name,batch,expdate,mpack,mpsize,cp,prqty,prprice,currentstock,sudesc,stkpr,markup,sp,spdesc,spsize,stksp,sellqty,sunits,tprice,id) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) on duplicate key update expdate = ?,mpsize=?,cp=?,prqty= prqty + ?,prprice=prprice + ?,currentstock= currentstock + ?,sudesc=?,stkpr=stkpr ?,markup=?,sp=?,spdesc=?,spsize=?,stksp=?,sellqty=?,sunits=?,tprice=?,id=?
+
+saved: >-
+  insert into distributep (branchid,allocationid,allocationdate,productName,batch,expdate,unit,unitprice,allocationqty,reqqty,edate) values(?,?,?,?,?,?,?,?,?,?,curdate())
+
+savequotation: >-
+  insert into quotation(quotation,quotationdate,author,cdiscount,custId,custName,custPhone,gender,age,ean,pname,unit,unitprice,quantity,free,stock,total,titems,subt,discount,tax,gtotal,status) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) on duplicate key update quotationdate = ?,author=?,cdiscount = ?,custId=?,custName=?,custPhone=?,gender=?,age=?,ean=?,pname=?,unit=unit + ?,unitprice=?,quantity=?,free=?,stock=?,total=?,titems=?,subt=?,discount=?,tax=?,gtotal=?
+
+savepurchase: >-
+  insert into purchase(allocationid,receiveddate,updatepricing,supplier,supplierInvoice,productName,Batch,expDate,mpack,mdesc,sudesc,quantity,discount,unitPrice,free,total,grandTotal,ean,id,pid) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) on duplicate key update expDate=?,mpack=?,mdesc =?,sudesc = ?,quantity= quantity + ? ,discount= ?,unitPrice= ?, free= free + ?,total=?,grandTotal=?,id=?,pid = ?
+
+saveproductstockho: >-
+  insert into productstock(code,name,batch,expdate,mpack,mpsize,cp,prqty,prprice,currentstock,sudesc,stkpr,markup,sp,spdesc,spsize,stksp,sellqty,sunits,tprice,id,pid) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) on duplicate key update expdate = ?,mpsize=?,cp=?,prqty= prqty + ?,prprice=prprice + ?,currentstock= currentstock ?,sudesc=?,stkpr=stkpr + ?,markup=?,sp=?,spdesc=?,spsize=?,stksp=?,sellqty=?,sunits=?,tprice=?,id=?,pid=?
+
+saveproductstockho1: >-
+  insert into dproductstock(code,name,batch,expdate,mpack,mpsize,cp,prqty,prprice,currentstock,sudesc,stkpr,markup,sp,spdesc,spsize,stksp,sellqty,sunits,tprice,id,pid) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) on duplicate key update expdate = ?,mpsize=?,cp=?,prqty= prqty + ?,prprice=prprice + ?,currentstock= currentstock ?,sudesc=?,stkpr=stkpr + ?,markup=?,sp=?,spdesc=?,spsize=?,stksp=?,sellqty=?,sunits=?,tprice=?,id=?,pid=?
+
+saveproductstockho2: >-
+  insert into productstock (code,name,batch,expdate,mpack,mpsize,cp,prqty,prprice,currentstock,sudesc,stkpr,markup,sp,spdesc,spsize,stksp,sellqty,sunits,tprice,id,pid) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) on duplicate key update expdate = ?,mpsize=?,cp=?,prqty= ?,prprice=?,currentstock= currentstock + ?,sudesc=? ,stkpr=?,markup=?,sp=?,spdesc=?,spsize=?,stksp=?,sellqty=?,sunits=?,tprice=?,id=?,pid=?
+
+dsavepurchase: >-
+  insert into dpurchase(allocationid,receiveddate,updatepricing,supplier,supplierInvoice,productName,Batch,expDate,mpack,mdesc,sudesc,quantity,discount,unitPrice,free,total,grandTotal,ean,id) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) on duplicate key update expDate=?,mpack=?,mdesc =?,sudesc = ?,quantity= quantity + ?,discount=?,unitPrice= ?, free= free ?,total=?,grandTotal=?,id=?
+
+updBranchdet: >-
+  insert into branchtransfer(pid,id,fid,datetime) values(?,?,?,Now())
+
+updTransfer: >-
+  insert into transferdetails (pid,batch,expdate,stkstrans,cp,sp) values(?,?,?,?,?,?)
+
+updstkinbr: >-
+  update productstock set currentstock = currentstock - ? where id = ? and pid = ? and batch = ?
+
+dupdatecatho2: >-
+  update dproductstock set category = (select pc from product where name=?) where id=? and name=?
+
+dupdatecatho1: >-
+  update dproductprice set category = (select pc from product where name=?) where name=?
+
+saveprPr: >-
+  update productprice set rmp =?, cp=?,sp=?  where name=? and batch =?
+
+psStatus: >-
+  update productstock set status=? where uqk=?
+
+update: >-
+  update productstock set currentstock = currentstock - ? where id=? and pid=? and batch=?
+
+updated: >-
+  update dproductstock set currentstock = currentstock - ? where id=? and pid=? and batch=?
+
+updateorpr: >-
+  update product set rlflag = ? where name=?
+
+updatereord: >-
+  update product set rlflag = ? where rq > (select sum(currentstock) from productstock where name=?) and name=?	
+
+deletepr: >-
+  delete from orderho where orderid = ? and ean like ?	

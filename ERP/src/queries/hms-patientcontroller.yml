@@ -1,0 +1,67 @@
+fetchMaxPatientId : >-
+ select max(CAST(SUBSTRING_INDEX(pid,'-',-1) as decimal)) as pid from patient
+ 
+fetchPatients : >-
+ select p.pid,p.fname,p.lname,p.regdate,p.dob,p.age,p.gender,p.mstatus,p.pofvisit,p.landphone,
+ p.mobile,p.email,p.ssn,p.address,p.city,p.country,p.pcode,p.ethnicity,p.mname,
+ CONCAT(p.fname,' ',p.mname,' ',p.lname) as fullname,p.state,p.child,p.mo,p.fo,p.modate,p.fodate,p.address2,
+ p.id,br.name from patient p left outer join branchdetails br on p.id = br.id where regdate 
+ between DATE_FORMAT(STR_TO_DATE(?, '%Y-%m-%d'),'%Y-%m-%d') and DATE_FORMAT(STR_TO_DATE(?, '%Y-%m-%d'),'%Y-%m-%d') 
+ order by CAST(SUBSTRING_INDEX(p.pid,'-',-1) as decimal) desc limit ?
+ 
+fetchPatientsFilter : >-
+ select p.pid,p.fname,p.lname,p.regdate,p.dob,p.age,p.gender,p.mstatus,p.pofvisit,p.landphone,
+ p.mobile,p.email,p.ssn,p.address,p.city,p.country,p.pcode,p.ethnicity,p.mname,
+ CONCAT(p.fname,' ',p.mname,' ',p.lname) as fullname,p.state,p.child,p.mo,p.fo,p.modate,p.fodate,
+ p.address2,p.id,br.name from patient p left outer join branchdetails br on p.id = br.id 
+ where regdate between DATE_FORMAT(STR_TO_DATE(?, '%Y-%m-%d'),'%Y-%m-%d') and DATE_FORMAT(STR_TO_DATE(?, '%Y-%m-%d'),'%Y-%m-%d') 
+ and (p.fname like ? or p.mname like ? or p.lname like ?) order by CAST(SUBSTRING_INDEX(p.pid,'-',-1) as decimal) desc limit ?
+ 
+savePatientsInfo : >-
+ insert into patient (pid,fname,lname,regdate,dob,age,gender,mstatus,pofvisit,landphone,mobile,email,ssn,address,city,country,pcode,ethnicity,mname,state,child,mo,fo,modate,fodate,address2,id) 
+ values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) on duplicate key update fname = values(fname), lname= values(lname), regdate=values(regdate),dob=values(dob),age=values(age),
+ gender=values(gender),mstatus=values(mstatus),pofvisit=values(pofvisit),landphone=values(landphone),
+ mobile=values(mobile),email=values(email),ssn=values(ssn),address=values(address),city=values(city),country=values(country),pcode=values(pcode),ethnicity=values(ethnicity),mname=values(mname),
+ state=values(state),child=values(child),mo=values(mo),fo=values(fo),modate=values(modate),fodate=values(fodate),address2=values(address2),id=values(id)
+ 
+savePatientsInsurance : >-
+ insert into insurance (pid,pins,sins,grp1,grp2,gid1,gid2,ph1,ph2,policyh1,policyh2,policyno1,policyno2,mid1,mid2) 
+ values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) on duplicate key update pins = values(pins),sins=values(sins),grp1=values(grp1),
+ grp2=values(grp2),gid1=values(gid1),gid2=values(gid2),ph1=values(ph1),ph2=values(ph2),policyh1=values(policyh1),
+ policyh2=values(policyh2),policyno1=values(policyno1),policyno2=values(policyno2),mid1=values(mid1),mid2=values(mid2)   
+ 
+updateInsurance : >-
+ update insurance set pins=?,mid1=?,policyh1 = ?,policyno1 = ? where pid = ?
+ 
+savePatientsAddnInfo : >-
+ insert into additionalinfo (pid,personname,relationship,employer,rdateofbirth,ager,workphone,mobilephone,raddress,rprovince,rstate,rcountry,spname,spdate,nofon,nofphone,referrence,family,allergies,presurgery,testrelease,spouse,homephone) 
+ values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) on duplicate key update personname=values(personname),relationship=values(relationship),employer=values(employer),rdateofbirth=values(rdateofbirth),ager=values(ager),workphone=values(workphone),
+ mobilephone=values(mobilephone),raddress=values(raddress),rprovince=values(rprovince),rstate=values(rstate),rcountry=values(rcountry),spname=values(spname),spdate=values(spdate),nofon=values(nofon),nofphone=values(nofphone),referrence=values(referrence),
+ family=values(family),allergies=values(allergies),presurgery=values(presurgery),testrelease=values(testrelease),spouse=values(spouse),homephone=values(homephone) 
+ 
+fetchInsuranceDetails : >-
+ select pins,sins,grp1,grp2,gid1,gid2,ph1,ph2,policyh1,policyh2,policyno1,policyno2,mid1,mid2 from insurance where pid = ?
+ 
+fetchDistinctPrimIns : >-
+ select distinct pins from insurance where pins not like 'null' and  pins not like ''
+ 
+fetchDistinctSecIns : >-
+ select distinct sins from insurance where sins not like 'null' and  sins not like ''
+ 
+fetchAdditionalInfo : >-
+ select personname,relationship,employer,rdateofbirth,ager,workphone,mobilephone,raddress,rprovince,rstate,rcountry,spname,spdate,nofon,nofphone,referrence,family,allergies,presurgery,testrelease,spouse,homephone from additionalinfo where pid = ?
+ 
+fetchPatientsForAppointment : >-
+ select p.autoid,p.pid,concat(p.fname,' ',p.mname,' ',p.lname) as patient,p.age,p.gender,p.mobile,ap.fileno from patient p right outer join appointment ap on p.pid = ap.pid where ap.id = ? limit ?
+ 
+fetchPatientsForAppointmentWithFilter : >-
+ select p.autoid,p.pid,concat(p.fname,' ',p.mname,' ',p.lname) as patient,p.age,p.gender,p.mobile,ap.fileno from patient p right outer join appointment ap on p.pid = ap.pid where ap.id = ? and (p.fname like ? or p.mname like ? or p.lname like ?) and p.pid like ? limit ?
+ 
+fetchCompletePatientsInfo : >-
+ select p.pid,concat(p.fname,' ',p.mname,' ',p.lname) as fullname,p.regdate,p.dob,p.age,p.gender,p.mstatus,p.pofvisit,p.landphone,p.mobile,p.email,p.ssn,p.address,p.city,p.country,p.pcode,p.ethnicity,p.state,p.child,p.mo,p.fo,p.modate,p.fodate,p.address2,
+ a.personname,a.relationship,a.employer,a.rdateofbirth,a.ager,a.workphone,a.mobilephone,a.raddress,a.rprovince,a.rstate,a.rcountry,a.spname,a.spdate,a.nofon,a.nofphone,a.referrence,a.family,a.allergies,a.presurgery,a.testrelease,a.spouse,i.pins,
+ i.sins,i.grp1,i.grp2,i.gid1,i.gid2,i.ph1,i.ph2,i.policyh1,i.policyh2,i.policyno1,i.policyno2,i.mid1,i.mid2,a.homephone from patient p left outer join additionalinfo a on p.pid = a.pid left outer join insurance i on p.pid = i.pid where p.pid = ?    
+  
+fetchPatientInfoForPrint : >-
+ select p.*,concat(p.fname,' ',p.mname,' ',p.lname) as fullname, a.*,i.* from patient p left outer join additionalinfo a on p.pid = a.pid left outer join insurance i on p.pid = i.pid where p.pid = ? 
+  

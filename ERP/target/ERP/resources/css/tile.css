@@ -1,0 +1,118 @@
+@charset "ISO-8859-1";
+.img{
+    width: 67px;
+    height: 67px;
+        /* padding-right: 30px; */
+}
+
+/* #well{
+	background: linear-gradient(to right, rgb(36,51,138), rgb(17,142,191));
+	font-family: "Verdana","sans-serif";
+	max-height:100px;
+}
+ */
+.tile1{
+	background:#07074e;   /* linear-gradient(to right, rgb(36,51,138), rgb(17,142,191));  */  /* #13475073; */
+	border-radius:12px;
+	   /*  margin: 20px; */
+	        height: 100px;
+	        margin-right: 18px;
+    margin-left: 18px;
+    margin-bottom: 18px;
+    width: 100px;
+}
+
+.tile2{
+	background:#2b3786;     /* #96875b; */
+	border-radius:12px;
+	 /*    margin: 20px; */
+	        height: 100px;
+	        margin-right: 18px;
+    margin-left: 18px;
+    margin-bottom: 18px;
+    width: 100px;
+}
+
+.tiletext{
+	font-weight:500;
+	font-size:11px;
+	font-family: verdana,sans-serif;
+	color: white;
+}
+figcaption{
+	margin-top:-21px;
+}
+
+.row2{
+    margin-top: 30px;
+}
+/* .cmslogo{
+    width: 40px;
+    padding-right: 2px;
+    margin-right: 14px;
+} */
+
+.cmslogo {
+   /*  width: 59px; */
+    padding-right: 2px;
+    margin-right: 14px;
+  /*   height: 86px; */
+   /*  margin-left: 7px; */
+    margin-top: -37px;
+    width: 89px;
+    height: 107px;
+}
+.tiletext:focus, .tiletext:hover, .tiletext2a:hover,.tiletext2a:focus {
+    color: #80e4ef;
+    text-decoration: none;
+}
+
+.pb{
+	 padding-bottom: 4px;
+}
+.pt{
+	 padding-top: 10px;
+}
+
+.ml{
+	margin-left: 149px;
+}
+.dashtext{
+	color: #ffff;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+.dashnum{
+	margin:0px 10px 0px;
+	color: #ffff;
+    font-size: 28px;
+}
+.dash1{
+	height: 85px; 
+	border-radius: 15px;
+	background-color:#c2c2de;
+	border-color:#c2c2de;
+}
+.dash2{
+	 height: 85px; 
+	 order: 2px solid ;
+	 border-radius: 15px; 
+	 background-color:#f0ad4e;
+	 border-color:#f0ad4e;
+}
+.cmstext{
+    color: white;
+    font-size: 28px;
+    font-family: verdana,sans-serif;
+}
+
+.img2{
+}
+.cmslogo2{
+	width: 65px;
+   padding-right: 2px;
+   margin-right: -9px;
+   height: 95px;
+   margin-left: 7px;
+   margin-top: -14px;
+}
