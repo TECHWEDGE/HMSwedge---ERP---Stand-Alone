@@ -181,7 +181,7 @@ alert('success')
 							<select class="selectpicker form-control" data-dropup-auto="false" data-size="5" data-live-search="true" form="f" name="branch" id="branch" onchange="setData(this.options[this.selectedIndex])" >
 								<option value="select" selected disabled>Select</option>
 							        <c:forEach var="p"  items="${model.list2}">
-							        <option value="${p.id}" data-value="${p.name}" data-val = "${p.type}">${p.name}</option>
+							        <option value="${p.id}" data-value="${p.name}" data-val = "${p.type}" selected>${p.name}</option>
 							        </c:forEach>
 							</select>
 						</div>
