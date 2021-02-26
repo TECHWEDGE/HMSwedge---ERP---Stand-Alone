@@ -61,7 +61,7 @@
 			<![CDATA[select s.autoid, s.invoice, s.subt subtotal, s.tax, s.gtotal, c.name customerName, 
    concat(p.fname,' ',p.mname,' ',p.lname) patientName, s.isPatient from sale s 
    left join hms.patient p on p.autoid = s.cid and isPatient = "true" 
-   left join erpho.customer c on c.cid = s.cid and isPatient = "false" 
+   left join customer c on c.cid = s.cid and isPatient = "false" 
    where s.invoicedate between $P{fromDate} and  $P{toDate}]]>
 		</queryString>
 		<field name="autoid" class="java.lang.Integer">
@@ -121,7 +121,7 @@
 		<![CDATA[select s.autoid, s.invoice, s.subt subtotal, s.tax, s.gtotal, c.name customerName, 
    concat(p.fname,' ',p.mname,' ',p.lname) patientName, s.isPatient from sale s 
    left join hms.patient p on p.autoid = s.cid and isPatient = "true" 
-   left join erpho.customer c on c.cid = s.cid and isPatient = "false" 
+   left join customer c on c.cid = s.cid and isPatient = "false" 
    where s.invoicedate between $P{fromDate} and  $P{toDate}]]>
 	</queryString>
 	<field name="autoid" class="java.lang.Integer">

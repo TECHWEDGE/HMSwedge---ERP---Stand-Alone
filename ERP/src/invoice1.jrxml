@@ -16,7 +16,7 @@
 		<defaultValueExpression><![CDATA[$P{realLogo}]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
-		<![CDATA[select * from erpho.saleho]]>
+		<![CDATA[select * from saleho]]>
 	</queryString>
 	<field name="invoice" class="java.lang.String"/>
 	<field name="invoiceDate" class="java.lang.String"/>

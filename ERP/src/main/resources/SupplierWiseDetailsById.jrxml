@@ -54,7 +54,7 @@
 		</parameter>
 		<queryString language="SQL">
 			<![CDATA[select s.name supplier,p.allocationid,p.receiveddate,pr.name productName,pd.packsize,pr.prc,pd.batch,pd.purchaseqty,pd.totalpurchaseprice total
-  from erpho.purchases p join erpho.purchasedetails pd on pd.purchasesid = p.autoid join erpho.supply s on s.sid = p.supplierid join erpho.product pr on pr.pid = pr.pid where s.sid = $P{supplierId} group by pd.pid]]>
+  from purchases p join purchasedetails pd on pd.purchasesid = p.autoid join supply s on s.sid = p.supplierid join product pr on pr.pid = pr.pid where s.sid = $P{supplierId} group by pd.pid]]>
 		</queryString>
 		<field name="supplier" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.name" value="name"/>
@@ -128,7 +128,7 @@
 	</parameter>
 	<queryString language="SQL">
 		<![CDATA[select s.name supplier,p.allocationid,p.receiveddate,pr.name productName,pd.packsize,pr.prc,pd.batch,pd.purchaseqty,pd.totalpurchaseprice total
-  from erpho.purchases p join erpho.purchasedetails pd on pd.purchasesid = p.autoid join erpho.supply s on s.sid = p.supplierid join erpho.product pr on pr.pid = pr.pid where s.sid = $P{supplierId} group by pd.pid]]>
+  from purchases p join purchasedetails pd on pd.purchasesid = p.autoid join supply s on s.sid = p.supplierid join product pr on pr.pid = pr.pid where s.sid = $P{supplierId} group by pd.pid]]>
 	</queryString>
 	<field name="supplier" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="name"/>

@@ -55,10 +55,10 @@
 		</parameter>
 		<queryString language="SQL">
 			<![CDATA[select b.name branch,s.invoice,c.name customer,concat(p.fname,' ',p.lname) patient,s.subt total,s.discount,s.tax,s.gtotal,s.isPatient
-from erpho.sale s 
-join erpho.branchdetails b on b.id = s.branchid
+from sale s 
+join branchdetails b on b.id = s.branchid
 left join hms.patient p on p.autoid = s.cid and s.isPatient='true'
-left join erpho.customer c on c.cid=s.cid and isPatient = 'false' where DATE_FORMAT(STR_TO_DATE(s.invoicedate,'%Y-%m-%d'),'%Y-%m-%d') between $P{fromDate} and $P{toDate}]]>
+left join customer c on c.cid=s.cid and isPatient = 'false' where DATE_FORMAT(STR_TO_DATE(s.invoicedate,'%Y-%m-%d'),'%Y-%m-%d') between $P{fromDate} and $P{toDate}]]>
 		</queryString>
 		<field name="branch" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.name" value="name"/>
@@ -131,10 +131,10 @@ left join erpho.customer c on c.cid=s.cid and isPatient = 'false' where DATE_FOR
 	</parameter>
 	<queryString language="SQL">
 		<![CDATA[select b.name branch,s.invoice,c.name customer,concat(p.fname,' ',p.lname) patient,s.subt total,s.discount,s.tax,s.gtotal,s.isPatient
-from erpho.sale s 
-join erpho.branchdetails b on b.id = s.branchid
+from sale s 
+join branchdetails b on b.id = s.branchid
 left join hms.patient p on p.autoid = s.cid and s.isPatient='true'
-left join erpho.customer c on c.cid=s.cid and isPatient = 'false' where DATE_FORMAT(STR_TO_DATE(s.invoicedate,'%Y-%m-%d'),'%Y-%m-%d') between $P{fromDate} and $P{toDate}]]>
+left join customer c on c.cid=s.cid and isPatient = 'false' where DATE_FORMAT(STR_TO_DATE(s.invoicedate,'%Y-%m-%d'),'%Y-%m-%d') between $P{fromDate} and $P{toDate}]]>
 	</queryString>
 	<field name="branch" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="name"/>

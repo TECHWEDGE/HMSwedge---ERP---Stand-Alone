@@ -57,7 +57,7 @@
 			<defaultValueExpression><![CDATA[$P{realLogo}]]></defaultValueExpression>
 		</parameter>
 		<queryString language="SQL">
-			<![CDATA[select s.autoid,s.invoice,s.fileno,s.titems,s.gtotal,d.pid,d.docid from erpho.sale s, hms.diagnose d where d.fileno = s.fileno and DATE_FORMAT(STR_TO_DATE(invoicedate,'%Y-%m-%d'),'%Y-%m-%d') between $P{fromDate} and $P{toDate} and d.docid=$P{doctorid}]]>
+			<![CDATA[select s.autoid,s.invoice,s.fileno,s.titems,s.gtotal,d.pid,d.docid from sale s, hms.diagnose d where d.fileno = s.fileno and DATE_FORMAT(STR_TO_DATE(invoicedate,'%Y-%m-%d'),'%Y-%m-%d') between $P{fromDate} and $P{toDate} and d.docid=$P{doctorid}]]>
 		</queryString>
 		<field name="autoid" class="java.lang.Integer">
 			<property name="com.jaspersoft.studio.field.name" value="autoid"/>
@@ -127,7 +127,7 @@
 		<defaultValueExpression><![CDATA[$P{realLogo}]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
-		<![CDATA[select s.autoid,s.invoice,s.fileno,s.titems,s.gtotal,d.pid,d.docid from erpho.sale s, hms.diagnose d where d.fileno = s.fileno and DATE_FORMAT(STR_TO_DATE(invoicedate,'%Y-%m-%d'),'%Y-%m-%d') between $P{fromDate} and $P{toDate} and d.docid=$P{doctorid}]]>
+		<![CDATA[select s.autoid,s.invoice,s.fileno,s.titems,s.gtotal,d.pid,d.docid from sale s, hms.diagnose d where d.fileno = s.fileno and DATE_FORMAT(STR_TO_DATE(invoicedate,'%Y-%m-%d'),'%Y-%m-%d') between $P{fromDate} and $P{toDate} and d.docid=$P{doctorid}]]>
 	</queryString>
 	<field name="autoid" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="autoid"/>

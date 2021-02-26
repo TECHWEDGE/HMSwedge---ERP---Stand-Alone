@@ -16,7 +16,7 @@
 		<defaultValueExpression><![CDATA[$P{realLogo}]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
-		<![CDATA[select * from erpho.purchase]]>
+		<![CDATA[select * from purchase]]>
 	</queryString>
 	<field name="allocationid" class="java.lang.String"/>
 	<field name="orderid" class="java.lang.String"/>

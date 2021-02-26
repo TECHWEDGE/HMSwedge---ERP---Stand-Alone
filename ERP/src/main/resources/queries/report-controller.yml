@@ -102,7 +102,7 @@ getAllSales: >-
    select s.autoid, s.invoice, s.subt subtotal, s.tax, s.gtotal, c.name customerName, 
    concat(p.fname,' ',p.mname,' ',p.lname) patientName, s.isPatient from sale s 
    left join hms.patient p on p.autoid = s.cid and isPatient = "true" 
-   left join erpho.customer c on c.cid = s.cid and isPatient = "false" 
+   left join customer c on c.cid = s.cid and isPatient = "false" 
    where s.invoicedate between ? and ?
    
 getAllSalesErp: >-
@@ -140,11 +140,11 @@ getAllSalesDetails: >-
    join product p on p.pid = sd.pid and s.invoicedate between ? and ?
 
 incomeByDoctor: >-
-   select s.autoid,s.invoice,s.fileno,s.titems,s.gtotal,d.pid,d.docid from erpho.sale s, hms.diagnose d where d.fileno = s.fileno 
+   select s.autoid,s.invoice,s.fileno,s.titems,s.gtotal,d.pid,d.docid from sale s, hms.diagnose d where d.fileno = s.fileno 
    and DATE_FORMAT(STR_TO_DATE(invoicedate,'%Y-%m-%d'),'%Y-%m-%d') between ? and ? and d.docid = ?
 
 incomeByAllDoctor: >-
-   select s.autoid,s.invoice,s.fileno,s.titems,s.gtotal,d.pid,d.docid from erpho.sale s, hms.diagnose d where d.fileno = s.fileno 
+   select s.autoid,s.invoice,s.fileno,s.titems,s.gtotal,d.pid,d.docid from sale s, hms.diagnose d where d.fileno = s.fileno 
    and DATE_FORMAT(STR_TO_DATE(invoicedate,'%Y-%m-%d'),'%Y-%m-%d') between ? and ?
    
 branchWiseSales: >-
@@ -159,8 +159,8 @@ elapsedStocks: >-
 
 elapsedStocksByProduct: >-
   select ps.pid,p.name,p.prc,ps.expdate,ps.stkpr,ps.mpsize,ps.currentstock,ps.cp,ps.sp,ps.batch
-  from erpho.productstock ps 
-  join erpho.product p on p.pid = ps.pid
+  from productstock ps 
+  join product p on p.pid = ps.pid
   where DATE_FORMAT(STR_TO_DATE(ps.expdate,'%Y-%m-%d'),'%d-%m-%Y') = ?
   
 productWisePurchase: >-

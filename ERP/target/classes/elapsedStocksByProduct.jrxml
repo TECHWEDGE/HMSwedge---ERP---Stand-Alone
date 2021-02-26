@@ -50,8 +50,8 @@
 		</parameter>
 		<queryString language="SQL">
 			<![CDATA[select ps.pid,p.name,p.prc,ps.expdate,ps.stkpr,ps.mpsize,ps.currentstock,ps.cp,ps.sp,ps.batch
-  from erpho.productstock ps 
-  join erpho.product p on p.pid = ps.pid where DATE_FORMAT(STR_TO_DATE(ps.expdate,'%Y-%m-%d'),'%d-%m-%Y') = $P{toDate}]]>
+  from productstock ps 
+  join product p on p.pid = ps.pid where DATE_FORMAT(STR_TO_DATE(ps.expdate,'%Y-%m-%d'),'%d-%m-%Y') = $P{toDate}]]>
 		</queryString>
 		<field name="pid" class="java.lang.Integer">
 			<property name="com.jaspersoft.studio.field.name" value="pid"/>
@@ -131,8 +131,8 @@
 	</parameter>
 	<queryString language="SQL">
 		<![CDATA[select ps.pid,p.name,p.prc,ps.expdate,ps.stkpr,ps.mpsize,ps.currentstock,ps.cp,ps.sp,ps.batch
-  from erpho.productstock ps 
-  join erpho.product p on p.pid = ps.pid where DATE_FORMAT(STR_TO_DATE(ps.expdate,'%Y-%m-%d'),'%d-%m-%Y') = $P{toDate}]]>
+  from productstock ps 
+  join product p on p.pid = ps.pid where DATE_FORMAT(STR_TO_DATE(ps.expdate,'%Y-%m-%d'),'%d-%m-%Y') = $P{toDate}]]>
 	</queryString>
 	<field name="pid" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="pid"/>

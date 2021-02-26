@@ -55,7 +55,7 @@
 		</parameter>
 		<queryString language="SQL">
 			<![CDATA[select p.allocationid,s.name supplier,pr.prc,pr.name productName,pd.batch,pd.packsize,pd.expirydate,pd.unitcp,pd.purchaseqty,pd.totalpurchaseprice total
-  from erpho.purchases p join erpho.purchasedetails pd on pd.purchasesid = p.autoid join erpho.supply s on s.sid=p.supplierid join erpho.product pr on pr.pid = pd.pid 
+  from purchases p join purchasedetails pd on pd.purchasesid = p.autoid join supply s on s.sid=p.supplierid join product pr on pr.pid = pd.pid 
   where DATE_FORMAT(STR_TO_DATE(p.receiveddate,'%Y-%m-%d'),'%Y-%m-%d') between $P{fromDate} and $P{toDate}]]>
 		</queryString>
 		<field name="allocationid" class="java.lang.String">
@@ -139,7 +139,7 @@
 	</parameter>
 	<queryString language="SQL">
 		<![CDATA[select p.allocationid,s.name supplier,pr.prc,pr.name productName,pd.batch,pd.packsize,pd.expirydate,pd.unitcp,pd.purchaseqty,pd.totalpurchaseprice total
-  from erpho.purchases p join erpho.purchasedetails pd on pd.purchasesid = p.autoid join erpho.supply s on s.sid=p.supplierid join erpho.product pr on pr.pid = pd.pid 
+  from purchases p join purchasedetails pd on pd.purchasesid = p.autoid join supply s on s.sid=p.supplierid join product pr on pr.pid = pd.pid 
   where DATE_FORMAT(STR_TO_DATE(p.receiveddate,'%Y-%m-%d'),'%Y-%m-%d') between $P{fromDate} and $P{toDate}]]>
 	</queryString>
 	<field name="allocationid" class="java.lang.String">

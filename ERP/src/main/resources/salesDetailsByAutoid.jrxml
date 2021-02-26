@@ -40,7 +40,7 @@
 		</parameter>
 		<queryString language="SQL">
 			<![CDATA[select s.autoid, sd.pid productCode, p.name productName, s.invoice, sd.spack packaging, sd.batch, sd.quantitysold, sd.unitprice, s.subt subtotal, s.tax, s.gtotal, sd.expirydate
-   from erpho.sale s join erpho.saledetails sd on sd.salesautoid = s.autoid
+   from sale s join saledetails sd on sd.salesautoid = s.autoid
    join product p on p.pid = sd.pid where s.autoid = $P{autoid}]]>
 		</queryString>
 		<field name="autoid" class="java.lang.Integer">
@@ -117,7 +117,7 @@
 	</parameter>
 	<queryString language="SQL">
 		<![CDATA[select s.autoid, sd.pid productCode, p.name productName, s.invoice, sd.spack packaging, sd.batch, sd.quantitysold, sd.unitprice, s.subt subtotal, s.tax, s.gtotal, sd.expirydate
-   from erpho.sale s join erpho.saledetails sd on sd.salesautoid = s.autoid
+   from sale s join saledetails sd on sd.salesautoid = s.autoid
    join product p on p.pid = sd.pid where s.autoid = $P{autoid}]]>
 	</queryString>
 	<field name="autoid" class="java.lang.Integer">

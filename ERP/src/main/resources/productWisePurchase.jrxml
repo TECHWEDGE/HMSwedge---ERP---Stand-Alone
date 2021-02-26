@@ -48,10 +48,10 @@
 		<queryString language="SQL">
 			<![CDATA[select pr.pid,pr.name,pr.prc,s.name supplier,pd.batch,pd.packsize mpack,sum(pd.purchaseqty) prqty,sum(pd.unitcp) unitprice,sum(pd.totalpurchaseprice) totalPrice,
   p.receiveddate
-  from erpho.purchasedetails pd
-  join erpho.purchases p on p.autoid=pd.purchasesid
-  join erpho.product pr on pr.pid = pd.pid 
-  join erpho.supply s on s.sid = p.supplierid group by pd.pid]]>
+  from purchasedetails pd
+  join purchases p on p.autoid=pd.purchasesid
+  join product pr on pr.pid = pd.pid 
+  join supply s on s.sid = p.supplierid group by pd.pid]]>
 		</queryString>
 		<field name="pid" class="java.lang.Integer">
 			<property name="com.jaspersoft.studio.field.name" value="pid"/>
@@ -128,10 +128,10 @@
 	<queryString language="SQL">
 		<![CDATA[select pr.pid,pr.name,pr.prc,s.name supplier,pd.batch,pd.packsize mpack,sum(pd.purchaseqty) prqty,sum(pd.unitcp) unitprice,sum(pd.totalpurchaseprice) totalPrice,
   p.receiveddate
-  from erpho.purchasedetails pd
-  join erpho.purchases p on p.autoid=pd.purchasesid
-  join erpho.product pr on pr.pid = pd.pid 
-  join erpho.supply s on s.sid = p.supplierid group by pd.pid]]>
+  from purchasedetails pd
+  join purchases p on p.autoid=pd.purchasesid
+  join product pr on pr.pid = pd.pid 
+  join supply s on s.sid = p.supplierid group by pd.pid]]>
 	</queryString>
 	<field name="pid" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="pid"/>

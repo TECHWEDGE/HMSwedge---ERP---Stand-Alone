@@ -51,7 +51,7 @@
 			<defaultValueExpression><![CDATA[$P{realLogo}]]></defaultValueExpression>
 		</parameter>
 		<queryString language="SQL">
-			<![CDATA[select ps.expdate,sum(ps.stkpr) stkpr from erpho.productstock ps where DATE_FORMAT(STR_TO_DATE(ps.expdate,'%Y-%m-%d'),'%Y-%m-%d') <= $P{toDate} group by ps.expdate]]>
+			<![CDATA[select ps.expdate,sum(ps.stkpr) stkpr from productstock ps where DATE_FORMAT(STR_TO_DATE(ps.expdate,'%Y-%m-%d'),'%Y-%m-%d') <= $P{toDate} group by ps.expdate]]>
 		</queryString>
 		<field name="expdate" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.name" value="expdate"/>
@@ -80,7 +80,7 @@
 		<defaultValueExpression><![CDATA[$P{realLogo}]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
-		<![CDATA[select ps.expdate,sum(ps.stkpr) stkpr from erpho.productstock ps where DATE_FORMAT(STR_TO_DATE(ps.expdate,'%Y-%m-%d'),'%Y-%m-%d') <= $P{toDate} group by ps.expdate]]>
+		<![CDATA[select ps.expdate,sum(ps.stkpr) stkpr from productstock ps where DATE_FORMAT(STR_TO_DATE(ps.expdate,'%Y-%m-%d'),'%Y-%m-%d') <= $P{toDate} group by ps.expdate]]>
 	</queryString>
 	<field name="expdate" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="expdate"/>
